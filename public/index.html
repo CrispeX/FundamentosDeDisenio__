@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Althea Gestión Turística</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Althea">
+        <div class="brand-text"><strong>althea</strong><span>Gestión Turística</span></div>
+      </div>
+      <nav id="menu" class="menu"></nav>
+      <div class="usuario">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#a9c4e4"><circle cx="12" cy="9" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>
+        </div>
+        <div><div class="usuario-nombre">Laura Gómez</div><div class="usuario-rol">Asesor Comercial</div></div>
+      </div>
+    </aside>
+    <main class="contenido" id="vista"></main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <dialog id="dialogo"></dialog>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/wizard.js"></script>
+  <script src="js/solicitudes.js"></script>
+  <script src="js/reservas.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
