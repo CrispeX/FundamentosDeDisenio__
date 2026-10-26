@@ -1,3 +1,4 @@
+const db = require('../models/db');
 const { sendJson, readBody } = require('../utils/http');
 const { HttpError } = require('../utils/errors');
 const clientes = require('../controllers/clientes.controller');
@@ -7,7 +8,7 @@ const reservas = require('../controllers/reservas.controller');
 const gestion = require('../services/gestion.service');
 
 const { crearRecomendador } = require('../services/recomendaciones.service');
-const recomendar = crearRecomendador({apiKey:process.env.OPENAI_API_KEY,model:process.env.OPENAI_MODEL || 'gpt-4.1-mini'});
+const recomendar = crearRecomendador({apiKey:process.env.OPENAI_API_KEY,model:process.env.OPENAI_MODEL || 'gpt-4.1-mini',cargarCatalogo:()=>{const data=db.load();return {intereses:require('../data/destinos.json').intereses,destinos:data.destinos || require('../data/destinos.json').destinos};}});
 
 const definiciones = [
   ['POST', '/api/recomendaciones', ({body}) => recomendar(body)],
@@ -43,11 +44,11 @@ async function handleApi(req, res) {
       const m = url.pathname.match(ruta.regex);
       if (!m || ruta.metodo !== req.method) continue;
       const body = ['POST', 'PATCH', 'PUT'].includes(req.method) ? await readBody(req) : {};
-      const out = await ruta.handler({
+      const out = await db.request(() => ruta.handler({
         params: m.groups || {},
         query: Object.fromEntries(url.searchParams),
         body
-      });
+      }));
       if (out && out.status) return sendJson(res, out.status, out.data);
       return sendJson(res, 200, out);
     }

@@ -3,7 +3,7 @@ const path = require('path');
 // Archivo opcional del proyecto. Las variables del entorno tienen prioridad.
 const archivo = path.join(__dirname, '..', '..', '.env');
 try {
-  const permitidas = new Set(['OPENAI_API_KEY','OPENAI_MODEL']);
+  const permitidas = new Set(['OPENAI_API_KEY','OPENAI_MODEL','ALTHEA_STORAGE','SUPABASE_URL','SUPABASE_SECRET_KEY','SUPABASE_SERVICE_ROLE_KEY']);
   for (const linea of fs.readFileSync(archivo,'utf8').split(/\r?\n/)) {
     const m = linea.match(/^\s*([A-Z_]+)\s*=\s*(.*?)\s*$/);
     if (!m || !permitidas.has(m[1]) || process.env[m[1]] !== undefined) continue;

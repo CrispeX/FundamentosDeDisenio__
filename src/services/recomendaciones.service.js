@@ -30,15 +30,15 @@ function prepararPerfil(datos) {
   const intereses = [...new Set([...(p.intereses || []), ...catalogo.intereses.filter(i => pistas[i].some(t => new RegExp('\\b' + t + '\\b').test(notas)))])].sort();
   return {origen, destinoDeseado, salida, regreso, dias, viajeros:viajeros.length, ninos:viajeros.filter(x=>x.tipo==='Niño').length, servicio, presupuesto, intereses};
 }
-function candidatos(perfil) { return catalogo.destinos.filter(d => normalizar(d.nombre) !== normalizar(perfil.origen)); }
-function sugerenciasLocales(perfil) {
+function candidatos(perfil, catalogoActual = catalogo) { return catalogoActual.destinos.filter(d => normalizar(d.nombre) !== normalizar(perfil.origen)); }
+function sugerenciasLocales(perfil, catalogoActual = catalogo) {
   const unidades = perfil.servicio === 'Vuelo' ? perfil.viajeros : perfil.viajeros * perfil.dias;
   const porUnidad = perfil.presupuesto ? perfil.presupuesto / unidades : null;
   const bandas = perfil.servicio === 'Vuelo' ? [500000, 1200000] : perfil.servicio === 'Hotel' ? [100000, 250000] : [200000, 450000];
   // Bandas de planificación de demostración, no tarifas ni presupuestos garantizados por destino.
   const nivel = porUnidad == null ? 2 : porUnidad < bandas[0] ? 1 : porUnidad < bandas[1] ? 2 : 3;
-  const deseado = catalogo.destinos.find(d=>normalizar(d.nombre)===normalizar(perfil.destinoDeseado));
-  return candidatos(perfil).map(d => {
+  const deseado = catalogoActual.destinos.find(d=>normalizar(d.nombre)===normalizar(perfil.destinoDeseado));
+  return candidatos(perfil, catalogoActual).map(d => {
     const afinidad = d.intereses.filter(i=>perfil.intereses.includes(i));
     const puntuacion = afinidad.length * 5 + (deseado && d.region === deseado.region ? 2 : 0) +
       (normalizar(d.nombre) === normalizar(perfil.destinoDeseado) ? 1 : 0) +
@@ -51,11 +51,11 @@ function sugerenciasLocales(perfil) {
     return {id:d.id,destino:d.nombre,pais:d.pais,motivo,actividades:d.actividades,consejo, puntuacion};
   }).sort((a,b)=>b.puntuacion-a.puntuacion || a.id.localeCompare(b.id)).slice(0,3).map(({puntuacion,...r})=>r);
 }
-function crearRecomendador({apiKey='',model='gpt-4.1-mini',fetchImpl=globalThis.fetch,now=Date.now,timeoutMs=15000,maxRequests=6}={}) {
+function crearRecomendador({apiKey='',model='gpt-4.1-mini',fetchImpl=globalThis.fetch,now=Date.now,timeoutMs=15000,maxRequests=6,cargarCatalogo=null}={}) {
   const cache = new Map(), pendientes = new Map();
   let ventana = 0, llamadas = 0, activas = 0;
-  async function consultarIA(perfil) {
-    const lista = candidatos(perfil);
+  async function consultarIA(perfil, catalogoActual) {
+    const lista = candidatos(perfil, catalogoActual);
     const schema = {type:'object',additionalProperties:false,properties:{recomendaciones:{type:'array',items:{
       type:'object',additionalProperties:false,properties:{id:{type:'string',enum:lista.map(d=>d.id)},motivo:{type:'string'},consejo:{type:'string'}},required:['id','motivo','consejo']
     }}},required:['recomendaciones']};
@@ -83,9 +83,11 @@ function crearRecomendador({apiKey='',model='gpt-4.1-mini',fetchImpl=globalThis.
   }
   return async function recomendar(datos) {
     const perfil = prepararPerfil(datos);
-    const local = {modo:'local',aviso:AVISO,recomendaciones:sugerenciasLocales(perfil)};
+    const catalogoActual = cargarCatalogo ? await cargarCatalogo() : catalogo;
+    if (!catalogoActual?.destinos?.length) throw new HttpError(503, 'El catálogo de destinos no está disponible.');
+    const local = {modo:'local',aviso:AVISO,recomendaciones:sugerenciasLocales(perfil, catalogoActual)};
     if (!apiKey) return local;
-    const clave = JSON.stringify(perfil);
+    const clave = JSON.stringify({perfil,catalogo:catalogoActual.destinos});
     const anterior = cache.get(clave);
     if (anterior && anterior.expira > now()) return anterior.valor;
     if (pendientes.has(clave)) return pendientes.get(clave);
@@ -94,7 +96,7 @@ function crearRecomendador({apiKey='',model='gpt-4.1-mini',fetchImpl=globalThis.
     llamadas++; activas++;
     const promesa = (async()=>{
       try {
-        const recomendaciones=await consultarIA(perfil);
+        const recomendaciones=await consultarIA(perfil, catalogoActual);
         const valor={modo:'ia',aviso:AVISO,recomendaciones};
         cache.set(clave,{valor,expira:now()+600000});
         if(cache.size>100)cache.delete(cache.keys().next().value);

@@ -92,3 +92,13 @@ test('El asistente permite destino vacío en paso 3 y exige elegirlo antes de gu
   assert.equal(vm.runInContext('validarPaso()',ctx),'');
   assert.match(vm.runInContext('vistaPaso()',ctx),/Ideas para tu viaje/);
 });
+
+test('El recomendador utiliza el catálogo proporcionado por la base de datos',async()=>{
+  const base=require('../src/data/destinos.json');
+  const elegidos=base.destinos.filter(d=>['salento','pereira','cali','bogota'].includes(d.id));
+  let lecturas=0;
+  const rec=crearRecomendador({cargarCatalogo:async()=>{lecturas++;return {...base,destinos:elegidos};}});
+  const r=await rec(datos);
+  assert.equal(lecturas,1);assert.equal(r.recomendaciones.length,3);
+  assert.ok(r.recomendaciones.every(s=>elegidos.some(d=>d.id===s.id)));
+});
