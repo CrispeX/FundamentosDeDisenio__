@@ -36,35 +36,24 @@ async function vistaInicio() {
     </div>`;
 }
 
-async function vistaClientes() {
-  const lista = await api('GET', '/api/clientes');
-  $('#vista').innerHTML = `
-    <header class="encabezado"><div class="titulo"><h1>Clientes</h1></div></header>
-    <div class="tabla-wrap"><table>
-      <thead><tr><th>Nombre</th><th>Correo</th><th>Teléfono</th></tr></thead>
-      <tbody>${lista.map(c => `<tr><td>${esc(c.nombre)}</td><td>${esc(c.correo)}</td><td>${esc(c.telefono)}</td></tr>`).join('')}</tbody>
-    </table></div>`;
-}
-
-function vistaPendiente(titulo) {
-  $('#vista').innerHTML = `
-    <header class="encabezado"><div class="titulo"><h1>${titulo}</h1></div></header>
-    <div class="tabla-wrap"><div class="vacio">Este módulo aún no está disponible.</div></div>`;
-}
-
 async function enrutar() {
   const ruta = location.hash.replace(/^#\//, '') || 'inicio';
   const base = ruta.split('/')[0];
+  if ($('#dialogo').open) cerrarDialogo();
   pintarMenu(base);
   try {
     if (ruta === 'solicitudes/nueva') return vistaNuevaSolicitud();
     if (base === 'inicio') return await vistaInicio();
-    if (base === 'clientes') return await vistaClientes();
-    if (base === 'solicitudes') return await vistaSolicitudes();
+    if (base === 'clientes') return await gestionarClientes();
+    if (base === 'solicitudes') return await gestionarSolicitudes();
     if (base === 'reservas') return await vistaReservas();
-    const item = MENU.find(([k]) => k === base);
-    vistaPendiente(item ? item[1] : 'No encontrado');
+    if (base === 'cotizaciones') return await gestionarCotizaciones();
+    if (base === 'pagos') return await gestionarPagos();
+    if (base === 'reportes') return await gestionarReportes();
+    $('#vista').innerHTML = cabecera('Página no encontrada') + '<a href="#/inicio" class="btn">Volver al inicio</a>';
   } catch (e) {
+    $('#vista').innerHTML = cabecera('No se pudo cargar la página') + '<p class="error">' + esc(e.message) + '</p><button class="btn" id="reintentar">Reintentar</button>';
+    $('#reintentar').onclick = enrutar;
     toast(e.message, true);
   }
 }

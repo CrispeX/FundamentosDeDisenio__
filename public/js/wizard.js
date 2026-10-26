@@ -121,6 +121,7 @@ function validarPaso() {
     if (!d.origen || !d.destino || !d.fechaSalida || !d.fechaRegreso) return 'Completa origen, destino y fechas.';
     if (d.fechaRegreso < d.fechaSalida) return 'La fecha de regreso no puede ser anterior a la de salida.';
   }
+  if (wz.paso === 4 && wz.preferencias.presupuesto !== '' && (!Number.isFinite(Number(wz.preferencias.presupuesto)) || Number(wz.preferencias.presupuesto) <= 0)) return 'El presupuesto debe ser un número positivo.';
   return '';
 }
 
@@ -141,17 +142,21 @@ function enlazarBuscador() {
     const q = input.value.trim();
     if (!q) { lista.hidden = true; return; }
     temporizador = setTimeout(async () => {
+      try {
       const clientes = await api('GET', `/api/clientes?q=${encodeURIComponent(q)}`);
+      if (!input.isConnected || input.value.trim() !== q) return;
       lista.innerHTML = clientes.length
-        ? clientes.map(c => `<li data-id="${c.id}">${esc(c.nombre)}<small>${esc(c.correo)} · ${esc(c.telefono)}</small></li>`).join('')
+        ? clientes.map(c => `<li tabindex="0" role="button" data-id="${c.id}">${esc(c.nombre)}<small>${esc(c.correo)} · ${esc(c.telefono)}</small></li>`).join('')
         : '<li>Sin resultados</li>';
       lista.hidden = false;
+      lista.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.target.click(); } };
       lista.onclick = e => {
         const li = e.target.closest('li[data-id]');
         if (!li) return;
         wz.cliente = { ...clientes.find(c => c.id === Number(li.dataset.id)) };
         renderWizard();
       };
+      } catch (err) { if (input.isConnected) { lista.hidden = true; toast(err.message, true); } }
     }, 200);
   });
   $('#nuevo').addEventListener('click', () => {
@@ -197,6 +202,9 @@ function renderWizard() {
     wz.error = validarPaso();
     if (wz.error) return renderWizard();
     if (!ultimo) { wz.paso++; return renderWizard(); }
+    const boton = $('#siguiente');
+    boton.disabled = true;
+    boton.textContent = 'Creando…';
     try {
       await enviarSolicitud();
     } catch (e) {

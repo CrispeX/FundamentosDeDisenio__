@@ -4,7 +4,17 @@ const clientes = require('../controllers/clientes.controller');
 const solicitudes = require('../controllers/solicitudes.controller');
 const reservas = require('../controllers/reservas.controller');
 
+const gestion = require('../services/gestion.service');
+
 const definiciones = [
+  ['PATCH', '/api/clientes/:id', ({params, body}) => clientes.modificar({params, body})],
+  ['GET', '/api/cotizaciones', () => gestion.listarCotizaciones()],
+  ['POST', '/api/cotizaciones', ({body}) => ({status: 201, data: gestion.crearCotizacion(body)})],
+  ['PATCH', '/api/cotizaciones/:id', ({params, body}) => gestion.modificarCotizacion(params.id, body)],
+  ['POST', '/api/cotizaciones/:id/estado', ({params, body}) => gestion.resolverCotizacion(params.id, body)],
+  ['GET', '/api/pagos', () => gestion.listarPagos()],
+  ['POST', '/api/pagos', ({body}) => ({status: 201, data: gestion.registrarPago(body)})],
+  ['POST', '/api/pagos/:id/anular', ({params}) => gestion.anularPago(params.id)],
   ['GET', '/api/clientes', clientes.listar],
   ['POST', '/api/clientes', clientes.crear],
   ['GET', '/api/solicitudes', solicitudes.listar],

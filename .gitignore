@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node y archivos temporales de datos
+node_modules/
+data/*.tmp
