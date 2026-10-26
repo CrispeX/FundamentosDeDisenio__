@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const config = require('./src/config');
 const { handleApi } = require('./src/routes');
+const db = require('./src/models/db');
 
 function serveStatic(req, res) {
   const urlPath = decodeURIComponent(req.url.split('?')[0]);
@@ -28,6 +29,8 @@ const server = http.createServer((req, res) => {
   serveStatic(req, res);
 });
 
-server.listen(config.PORT, config.HOST, () => {
+server.listen(config.PORT, config.HOST, async () => {
   console.log(`Althea Gestión Turística en http://${config.HOST}:${config.PORT}`);
+  try { await db.comprobarConexion(); console.log('Almacenamiento: '+config.STORAGE); }
+  catch(err) { console.error('Conexión de datos pendiente: '+err.message); }
 });
