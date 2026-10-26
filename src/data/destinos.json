@@ -1,0 +1,228 @@
+{
+  "intereses": [
+    "Playa",
+    "Naturaleza",
+    "Cultura",
+    "Aventura",
+    "Descanso",
+    "Gastronomía",
+    "Ciudad"
+  ],
+  "destinos": [
+    {
+      "id": "cartagena",
+      "nombre": "Cartagena",
+      "pais": "Colombia",
+      "intereses": [
+        "Playa",
+        "Cultura",
+        "Descanso"
+      ],
+      "nivel": 2,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Caribe",
+      "actividades": [
+        "Recorrer el centro histórico",
+        "Disfrutar de la playa"
+      ]
+    },
+    {
+      "id": "santa-marta",
+      "nombre": "Santa Marta",
+      "pais": "Colombia",
+      "intereses": [
+        "Playa",
+        "Naturaleza",
+        "Descanso"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Caribe",
+      "actividades": [
+        "Pasear por la bahía",
+        "Explorar playas y naturaleza"
+      ]
+    },
+    {
+      "id": "san-andres",
+      "nombre": "San Andrés",
+      "pais": "Colombia",
+      "intereses": [
+        "Playa",
+        "Aventura",
+        "Descanso"
+      ],
+      "nivel": 3,
+      "familiar": true,
+      "diasMinimos": 4,
+      "region": "Caribe",
+      "actividades": [
+        "Conocer las playas de la isla",
+        "Explorar actividades acuáticas"
+      ]
+    },
+    {
+      "id": "medellin",
+      "nombre": "Medellín",
+      "pais": "Colombia",
+      "intereses": [
+        "Cultura",
+        "Gastronomía",
+        "Ciudad"
+      ],
+      "nivel": 2,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Andina",
+      "actividades": [
+        "Visitar museos y espacios culturales",
+        "Probar la gastronomía local"
+      ]
+    },
+    {
+      "id": "bogota",
+      "nombre": "Bogotá",
+      "pais": "Colombia",
+      "intereses": [
+        "Cultura",
+        "Gastronomía",
+        "Ciudad"
+      ],
+      "nivel": 2,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Andina",
+      "actividades": [
+        "Recorrer La Candelaria",
+        "Visitar museos"
+      ]
+    },
+    {
+      "id": "salento",
+      "nombre": "Salento",
+      "pais": "Colombia",
+      "intereses": [
+        "Naturaleza",
+        "Descanso",
+        "Aventura"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Cafetera",
+      "actividades": [
+        "Conocer la cultura cafetera",
+        "Explorar paisajes naturales"
+      ]
+    },
+    {
+      "id": "pereira",
+      "nombre": "Pereira",
+      "pais": "Colombia",
+      "intereses": [
+        "Naturaleza",
+        "Gastronomía",
+        "Descanso"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 2,
+      "region": "Cafetera",
+      "actividades": [
+        "Visitar una experiencia cafetera",
+        "Recorrer los alrededores"
+      ]
+    },
+    {
+      "id": "villa-de-leyva",
+      "nombre": "Villa de Leyva",
+      "pais": "Colombia",
+      "intereses": [
+        "Cultura",
+        "Descanso",
+        "Naturaleza"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 2,
+      "region": "Andina",
+      "actividades": [
+        "Recorrer el centro colonial",
+        "Explorar paisajes cercanos"
+      ]
+    },
+    {
+      "id": "san-gil",
+      "nombre": "San Gil",
+      "pais": "Colombia",
+      "intereses": [
+        "Aventura",
+        "Naturaleza"
+      ],
+      "nivel": 1,
+      "familiar": false,
+      "diasMinimos": 3,
+      "region": "Santander",
+      "actividades": [
+        "Explorar senderos",
+        "Consultar actividades de aventura adecuadas para el grupo"
+      ]
+    },
+    {
+      "id": "bucaramanga",
+      "nombre": "Bucaramanga",
+      "pais": "Colombia",
+      "intereses": [
+        "Naturaleza",
+        "Ciudad",
+        "Gastronomía"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 2,
+      "region": "Santander",
+      "actividades": [
+        "Recorrer parques",
+        "Probar la gastronomía santandereana"
+      ]
+    },
+    {
+      "id": "cali",
+      "nombre": "Cali",
+      "pais": "Colombia",
+      "intereses": [
+        "Cultura",
+        "Gastronomía",
+        "Ciudad"
+      ],
+      "nivel": 1,
+      "familiar": true,
+      "diasMinimos": 3,
+      "region": "Pacífica",
+      "actividades": [
+        "Conocer espacios de cultura y salsa",
+        "Explorar la gastronomía local"
+      ]
+    },
+    {
+      "id": "leticia",
+      "nombre": "Leticia",
+      "pais": "Colombia",
+      "intereses": [
+        "Naturaleza",
+        "Aventura",
+        "Cultura"
+      ],
+      "nivel": 3,
+      "familiar": false,
+      "diasMinimos": 4,
+      "region": "Amazonía",
+      "actividades": [
+        "Consultar recorridos guiados de naturaleza",
+        "Conocer experiencias culturales locales"
+      ]
+    }
+  ]
+}

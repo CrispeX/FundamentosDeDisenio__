@@ -6,6 +6,7 @@ const path = require('node:path');
 const http = require('node:http');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'althea-test-'));
 process.env.ALTHEA_DB_FILE = path.join(dir, 'db.json');
+process.env.OPENAI_API_KEY = '';
 const { handleApi } = require('../src/routes');
 test('Flujo completo de clientes, solicitudes, cotizaciones, reservas y pagos', async t => {
   const server = http.createServer(handleApi);
@@ -24,6 +25,9 @@ test('Flujo completo de clientes, solicitudes, cotizaciones, reservas y pagos', 
     await api('POST','/api/solicitudes',{...datos,destino:{...datos.destino,fechaSalida:'2027-02-30'}},400);
     await api('POST','/api/solicitudes',{...datos,preferencias:{presupuesto:-1}},400);
   });
+  const ideas = await api('POST','/api/recomendaciones',datos);
+  assert.equal(ideas.modo,'local'); assert.equal(ideas.recomendaciones.length,3);
+  assert.equal((await api('GET','/api/clientes')).length,0);
   const s = await api('POST','/api/solicitudes',datos,201);
   await t.test('Clientes: buscar, editar y rechazar correo duplicado', async () => {
     const c = (await api('GET','/api/clientes?q=cliente'))[0];

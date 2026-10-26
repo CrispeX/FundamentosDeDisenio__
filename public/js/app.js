@@ -37,6 +37,7 @@ async function vistaInicio() {
 }
 
 async function enrutar() {
+  detenerRecomendaciones();
   const ruta = location.hash.replace(/^#\//, '') || 'inicio';
   const base = ruta.split('/')[0];
   if ($('#dialogo').open) cerrarDialogo();

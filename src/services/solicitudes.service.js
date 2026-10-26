@@ -55,6 +55,7 @@ function crear(datos) {
     preferencias: {
       tipoServicio: p.tipoServicio || 'Paquete',
       presupuesto,
+      intereses: Array.isArray(p.intereses) ? [...new Set(p.intereses.filter(i=>require('../data/destinos.json').intereses.includes(i)))] : [],
       notas: String(p.notas || '').trim()
     },
     estado: 'Pendiente',
