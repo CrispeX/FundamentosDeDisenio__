@@ -185,3 +185,29 @@ dialog dd { overflow-wrap: anywhere; }
   .pie .btn { min-width: auto; }
 }
 @media (max-width: 480px) { dialog dl { grid-template-columns: 1fr; gap: 4px; } dialog dd { margin-bottom: 8px; } .filtros .btn { flex: 1; } }
+
+/* Inspiración y recomendaciones del viaje */
+.intereses { border: 0; margin: 0 0 20px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.intereses legend { font-weight: 700; color: var(--titulo); padding: 0 0 10px; }
+.intereses label { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #cfe3f5; padding: 8px 12px; border-radius: 20px; cursor: pointer; }
+.intereses input { width: 16px; height: 16px; margin: 0; accent-color: var(--primario); }
+.intereses label:has(input:checked) { background: #dff3f8; border-color: var(--primario); }
+.sugerencias { margin-top: 28px; }
+.sugerencias h2 { margin: 0 0 6px; color: var(--titulo); font-size: 20px; }
+.sugerencias-cabecera { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+.sugerencias-cabecera p, .sugerencias-aviso { color: #4b6070; font-size: 13px; }
+.sugerencias-cabecera p { margin: 0; }
+.destino-seleccionado { margin-top: 18px; padding: 14px 16px; background: #edf6fb; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.destino-seleccionado strong { font-size: 14px; color: var(--titulo); }
+#recomendaciones-estado { color: #4b6070; font-size: 14px; min-height: 20px; }
+.recomendaciones-rejilla { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.recomendacion { border: 1px solid #d7e6ef; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; background: #fff; min-width: 0; overflow-wrap: anywhere; }
+.recomendacion.seleccionada { border: 2px solid var(--primario); background: #f2fbfd; padding: 19px; }
+.recomendacion h3 { color: var(--titulo); margin: 6px 0 10px; }
+.recomendacion-pais { color: #4b6070; font-size: 12px; }
+.recomendacion p, .recomendacion li { font-size: 13px; line-height: 1.55; }
+.recomendacion p { margin: 0 0 12px; }
+.recomendacion ul { margin: 0 0 14px; padding-left: 18px; }
+.recomendacion-consejo { color: #4b6070; }
+.recomendacion .btn { margin-top: auto; align-self: flex-start; }
+@media (max-width:1100px) { .recomendaciones-rejilla { grid-template-columns: 1fr; } }

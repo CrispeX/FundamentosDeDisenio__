@@ -6,7 +6,11 @@ const reservas = require('../controllers/reservas.controller');
 
 const gestion = require('../services/gestion.service');
 
+const { crearRecomendador } = require('../services/recomendaciones.service');
+const recomendar = crearRecomendador({apiKey:process.env.OPENAI_API_KEY,model:process.env.OPENAI_MODEL || 'gpt-4.1-mini'});
+
 const definiciones = [
+  ['POST', '/api/recomendaciones', ({body}) => recomendar(body)],
   ['PATCH', '/api/clientes/:id', ({params, body}) => clientes.modificar({params, body})],
   ['GET', '/api/cotizaciones', () => gestion.listarCotizaciones()],
   ['POST', '/api/cotizaciones', ({body}) => ({status: 201, data: gestion.crearCotizacion(body)})],

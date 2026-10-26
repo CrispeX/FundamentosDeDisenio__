@@ -10,7 +10,8 @@ function reiniciarWizard() {
     cliente: { id: null, nombre: '', correo: '', telefono: '' },
     viajeros: [{ nombre: '', documento: '', tipo: 'Adulto' }],
     destino: { origen: '', destino: '', fechaSalida: '', fechaRegreso: '' },
-    preferencias: { tipoServicio: 'Paquete', presupuesto: '', notas: '' },
+    preferencias: { tipoServicio: 'Paquete', presupuesto: '', notas: '', intereses: [] },
+    recomendaciones: { cargando: false, datos: null, error: '' },
     error: ''
   };
 }
@@ -70,7 +71,7 @@ function vistaPaso() {
     return `<section class="tarjeta"><h2>Información del destino</h2>
       <div class="rejilla-2" style="margin-bottom:24px">
         ${campo('d-origen', 'Origen', d.origen, { placeholder: 'Ej. Medellín' })}
-        ${campo('d-destino', 'Destino', d.destino, { placeholder: 'Ej. Cartagena' })}
+        ${campo('d-destino', 'Destino (opcional)', d.destino, { placeholder: 'Déjalo vacío para recibir sugerencias', requerido: false })}
       </div>
       <div class="rejilla-2">
         ${campo('d-salida', 'Fecha de salida', d.fechaSalida, { tipo: 'date' })}
@@ -78,16 +79,27 @@ function vistaPaso() {
       </div></section>`;
   }
   const p = wz.preferencias;
+  const intereses = ['Playa','Naturaleza','Cultura','Aventura','Descanso','Gastronomía','Ciudad'];
   return `<section class="tarjeta"><h2>Preferencias del viaje</h2>
     <div class="rejilla-2" style="margin-bottom:24px">
       <div class="campo"><label for="p-tipo">Tipo de servicio</label>
         <select id="p-tipo">
           ${['Paquete', 'Vuelo', 'Hotel'].map(t => `<option ${p.tipoServicio === t ? 'selected' : ''}>${t}</option>`).join('')}
         </select></div>
-      ${campo('p-presupuesto', 'Presupuesto (COP)', p.presupuesto, { placeholder: 'Ej. 3000000', tipo: 'number', requerido: false })}
+      ${campo('p-presupuesto', 'Presupuesto total del grupo (COP)', p.presupuesto, { placeholder: 'Ej. 3000000', tipo: 'number', requerido: false })}
     </div>
+    <fieldset class="intereses"><legend>¿Qué te gustaría disfrutar?</legend>
+      ${intereses.map(i => `<label><input type="checkbox" name="p-intereses" value="${esc(i)}" ${(p.intereses || []).includes(i) ? 'checked' : ''}> ${esc(i)}</label>`).join('')}
+    </fieldset>
     <div class="campo"><label for="p-notas">Notas</label>
-      <textarea id="p-notas" placeholder="Preferencias adicionales">${esc(p.notas)}</textarea></div></section>`;
+      <textarea id="p-notas" placeholder="Ej. playa, naturaleza o descanso">${esc(p.notas)}</textarea></div></section>
+    <section class="sugerencias" aria-labelledby="sugerencias-titulo">
+      <div class="sugerencias-cabecera"><div><h2 id="sugerencias-titulo">Ideas para tu viaje</h2><p>Según tus fechas, viajeros, presupuesto e intereses.</p></div><button class="btn btn-soft" type="button" id="actualizar-recomendaciones">Actualizar sugerencias</button></div>
+      <div class="destino-seleccionado"><strong id="destino-elegido"></strong><button class="btn btn-chico btn-borde" type="button" id="cambiar-destino">Cambiar destino</button></div>
+      <p id="recomendaciones-estado" role="status" aria-live="polite"></p>
+      <div class="recomendaciones-rejilla" id="recomendaciones" aria-busy="false"></div>
+      <p id="recomendaciones-aviso" class="sugerencias-aviso"></p>
+    </section>`;
 }
 
 function leerPaso() {
@@ -106,7 +118,7 @@ function leerPaso() {
     wz.destino = { origen: val('#d-origen'), destino: val('#d-destino'), fechaSalida: val('#d-salida'), fechaRegreso: val('#d-regreso') };
   }
   if (wz.paso === 4) {
-    wz.preferencias = { tipoServicio: val('#p-tipo'), presupuesto: val('#p-presupuesto'), notas: val('#p-notas') };
+    wz.preferencias = { tipoServicio: val('#p-tipo'), presupuesto: val('#p-presupuesto'), notas: val('#p-notas'), intereses: [...document.querySelectorAll('[name="p-intereses"]:checked')].map(x=>x.value) };
   }
 }
 
@@ -118,9 +130,10 @@ function validarPaso() {
   }
   if (wz.paso === 2 && wz.viajeros.some(p => !p.nombre || !p.documento)) return 'Completa nombre y documento de cada viajero.';
   if (wz.paso === 3) {
-    if (!d.origen || !d.destino || !d.fechaSalida || !d.fechaRegreso) return 'Completa origen, destino y fechas.';
+    if (!d.origen || !d.fechaSalida || !d.fechaRegreso) return 'Completa el origen y las fechas del viaje.';
     if (d.fechaRegreso < d.fechaSalida) return 'La fecha de regreso no puede ser anterior a la de salida.';
   }
+  if (wz.paso === 4 && !d.destino) return 'Elige un destino de las sugerencias o usa Cambiar destino antes de crear la solicitud.';
   if (wz.paso === 4 && wz.preferencias.presupuesto !== '' && (!Number.isFinite(Number(wz.preferencias.presupuesto)) || Number(wz.preferencias.presupuesto) <= 0)) return 'El presupuesto debe ser un número positivo.';
   return '';
 }
@@ -167,6 +180,7 @@ function enlazarBuscador() {
 }
 
 function renderWizard() {
+  detenerRecomendaciones();
   const ultimo = wz.paso === PASOS.length;
   $('#vista').innerHTML = `
     <header class="encabezado">
@@ -190,6 +204,7 @@ function renderWizard() {
   if ($('#anterior')) $('#anterior').onclick = () => { leerPaso(); wz.error = ''; wz.paso--; renderWizard(); };
 
   if (wz.paso === 1) enlazarBuscador();
+  if (wz.paso === 4) enlazarRecomendaciones();
   if (wz.paso === 2) {
     $('#agregar').onclick = () => { leerPaso(); wz.viajeros.push({ nombre: '', documento: '', tipo: 'Adulto' }); renderWizard(); };
     document.querySelectorAll('[data-quitar]').forEach(b => {
