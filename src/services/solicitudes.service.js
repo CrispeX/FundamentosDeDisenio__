@@ -18,14 +18,6 @@ function obtener(id) {
 }
 
 function crear(datos) {
-  let cliente;
-  if (datos.cliente && datos.cliente.id) {
-    cliente = clientes.obtener(datos.cliente.id);
-    if (!cliente) throw new HttpError(404, 'Cliente no encontrado');
-  } else {
-    cliente = clientes.crear(datos.cliente || {});
-  }
-
   const viajeros = Array.isArray(datos.viajeros) ? datos.viajeros : [];
   if (viajeros.length === 0) throw new HttpError(400, 'Agrega al menos un viajero');
   const viajerosOk = viajeros.map(p => ({
@@ -44,6 +36,17 @@ function crear(datos) {
   v.rangoFechas(destino.fechaSalida, destino.fechaRegreso);
 
   const p = datos.preferencias || {};
+  const presupuesto = p.presupuesto == null || p.presupuesto === '' ? null : Number(p.presupuesto);
+  if (presupuesto !== null && (!Number.isFinite(presupuesto) || presupuesto <= 0)) throw new HttpError(400, 'El presupuesto debe ser un número positivo');
+  if (p.tipoServicio && !['Paquete', 'Vuelo', 'Hotel'].includes(p.tipoServicio)) throw new HttpError(400, 'Tipo de servicio inválido');
+  let cliente;
+  if (datos.cliente && datos.cliente.id) {
+    cliente = clientes.obtener(datos.cliente.id);
+    if (!cliente) throw new HttpError(404, 'Cliente no encontrado');
+  } else {
+    cliente = clientes.crear(datos.cliente || {});
+  }
+
   const solicitud = {
     id: db.nextId('solicitudes'),
     clienteId: cliente.id,
@@ -51,8 +54,8 @@ function crear(datos) {
     destino,
     preferencias: {
       tipoServicio: p.tipoServicio || 'Paquete',
-      presupuesto: p.presupuesto ? Number(p.presupuesto) : null,
-      notas: (p.notas || '').trim()
+      presupuesto,
+      notas: String(p.notas || '').trim()
     },
     estado: 'Pendiente',
     creadaEn: new Date().toISOString()
