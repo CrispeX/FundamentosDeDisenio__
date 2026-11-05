@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">act Althea :: Solicitar y reservar un viaje</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Decisiones sin nombre; condiciones en las salidas. Cada proceso tiene un único nodo final.</tspan></text>
+<rect x="60" y="150" width="1800" height="375" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="150" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="179" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Capturar y revisar el perfil de viaje</tspan></text>
+<circle cx="100" cy="270" r="11" fill="#222"/>
+<rect x="145" y="230" width="270" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="280" y="263" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="280" dy="0">Capturar cliente</tspan><tspan x="280" dy="33.75">y viajeros</tspan></text>
+<rect x="470" y="230" width="270" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="605" y="263" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="605" dy="0">Ingresar fechas</tspan><tspan x="605" dy="33.75">y preferencias</tspan></text>
+<polygon points="810,252 828,270 810,288 792,270" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<rect x="900" y="220" width="300" height="90" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1050" y="258" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1050" dy="0">Obtener ideas de IA</tspan><tspan x="1050" dy="33.75">o del catálogo</tspan></text>
+<rect x="1260" y="220" width="300" height="90" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1410" y="258" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1410" dy="0">Elegir destino</tspan><tspan x="1410" dy="33.75">y revisar perfil</tspan></text>
+<polygon points="1640,247 1658,265 1640,283 1622,265" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<polyline points="112,270 145,270" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="415,270 470,270" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="740,270 792,270" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="828,270 900,270" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1200,265 1260,265" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1560,265 1622,265" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1658,265 1765,265 1765,425" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1690" y="240" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1690" dy="0">[válido]</tspan></text>
+<rect x="1495" y="425" width="270" height="65" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1630" y="465.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1630" dy="0">Guardar solicitud</tspan></text>
+<polyline points="1495,458 1430,458" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="1410" cy="458" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="1410" cy="458" r="10" fill="#222"/>
+<polyline points="1640,283 1640,365 810,365 810,288" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1180" y="351" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1180" dy="0">[datos incompletos] / corregir</tspan></text>
+<rect x="60" y="565" width="1800" height="455" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="565" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="594" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Formalizar la reserva</tspan></text>
+<circle cx="100" cy="735" r="11" fill="#222"/>
+<polygon points="160,721 174,735 160,749 146,735" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<rect x="220" y="695" width="260" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="728" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Consultar cupos</tspan><tspan x="350" dy="33.75">y detalles</tspan></text>
+<polygon points="530,717 548,735 530,753 512,735" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<polygon points="575,721 589,735 575,749 561,735" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<rect x="620" y="695" width="290" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="765" y="728" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="765" dy="0">Seleccionar asientos</tspan><tspan x="765" dy="33.75">y aceptar políticas</tspan></text>
+<polygon points="980,717 998,735 980,753 962,735" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<rect x="1060" y="695" width="250" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1185" y="728" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1185" dy="0">Mostrar vista previa</tspan><tspan x="1185" dy="33.75">del servidor</tspan></text>
+<rect x="1380" y="695" width="250" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1505" y="728" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1505" dy="0">Confirmar y validar</tspan><tspan x="1505" dy="33.75">cupos otra vez</tspan></text>
+<polygon points="1700,717 1718,735 1700,753 1682,735" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<polyline points="112,735 146,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="174,735 220,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="480,735 512,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="548,735 561,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="589,735 620,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="430" y="680" font-size="22" font-weight="normal" text-anchor="start"><tspan x="430" dy="0">[hay cupos]</tspan></text>
+<polyline points="910,735 962,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="998,735 1060,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1010" y="680" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1010" dy="0">[selección válida]</tspan></text>
+<polyline points="1310,735 1380,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1630,735 1682,735" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="1410" y="900" width="260" height="70" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1540" y="943" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1540" dy="0">Guardar reserva</tspan></text>
+<polyline points="1700,753 1700,935 1670,935" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1720" y="845" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1720" dy="0">[vigente]</tspan></text>
+<polygon points="1180,932 1198,950 1180,968 1162,950" fill="#fff" stroke="#333" stroke-width="2.5"/>
+<polyline points="1410,935 1300,935 1300,950 1198,950" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1180,968 1180,979" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="1180" cy="995" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="1180" cy="995" r="10" fill="#222"/>
+<polyline points="530,753 530,950 1162,950" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="555" y="920" font-size="22" font-weight="normal" text-anchor="start"><tspan x="555" dy="0">[sin cupos] / informar</tspan></text>
+<polyline points="980,717 980,665 575,665 575,721" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="630" y="653" font-size="22" font-weight="normal" text-anchor="start"><tspan x="630" dy="0">[selección inválida] / corregir</tspan></text>
+<polyline points="1700,717 1700,635 160,635 160,721" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1120" y="624" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1120" dy="0">[cambió disponibilidad] / actualizar</tspan></text>
+</g></svg>

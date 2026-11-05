@@ -19,6 +19,12 @@ test('Flujo completo de clientes, solicitudes, cotizaciones, reservas y pagos', 
     const json = await r.json(); assert.equal(r.status, status, JSON.stringify(json)); return json;
   }
   const cliente = {nombre:'Cliente de prueba',correo:'cliente@example.test',telefono:'3000000000'};
+  async function confirmacion(solicitudId,cotizacionId) {
+    const o=await api('GET',`/api/disponibilidad?solicitudId=${solicitudId}${cotizacionId?'&cotizacionId='+cotizacionId:''}`);
+    const datos={solicitudId,cotizacionId,asientos:o.tieneAsientos?o.asientos.filter(a=>a.disponible).slice(0,o.solicitados).map(a=>a.codigo):[],politicasAceptadas:true};
+    const previa=await api('POST','/api/reservas/vista-previa',datos);
+    return {...datos,vistaPreviaToken:previa.vistaPreviaToken};
+  }
   const datos = {cliente,viajeros:[{nombre:'Viajero de prueba',documento:'TEST-001',tipo:'Adulto'}],destino:{origen:'Medellín',destino:'Cartagena',fechaSalida:'2027-02-01',fechaRegreso:'2027-02-06'},preferencias:{tipoServicio:'Paquete',presupuesto:1500000}};
   await t.test('Una solicitud inválida no crea clientes huérfanos', async () => {
     await api('POST','/api/solicitudes',{...datos,viajeros:[]},400);
@@ -43,7 +49,7 @@ test('Flujo completo de clientes, solicitudes, cotizaciones, reservas y pagos', 
     c = await api('POST','/api/cotizaciones',{solicitudId:s.id,descripcion:'Hotel y vuelos',total:1000},201);
     await api('POST','/api/cotizaciones',{solicitudId:s.id,descripcion:'Duplicada',total:1000},409);
     await api('PATCH','/api/cotizaciones/'+c.id,{descripcion:'Hotel y vuelos editados',total:1200});
-    await api('POST','/api/cotizaciones/'+c.id+'/estado',{estado:'Aceptada'});
+    await api('POST','/api/cotizaciones/'+c.id+'/estado',{...await confirmacion(s.id,c.id),estado:'Aceptada'});
     await api('POST','/api/cotizaciones/'+c.id+'/estado',{estado:'Aceptada'},409);
   });
   let r = (await api('GET','/api/reservas'))[0];
@@ -72,10 +78,10 @@ test('Flujo completo de clientes, solicitudes, cotizaciones, reservas y pagos', 
     assert.equal((await api('GET','/api/cotizaciones'))[0].estado,'Cancelada');
     await api('POST','/api/pagos',{reservaId:r.id,monto:1,metodo:'Efectivo',referencia:'TEST-2'},409);
     await api('PATCH','/api/reservas/'+r.id,{fechaSalida:'2027-03-01',fechaRegreso:'2027-03-06'},409);
-    const nueva = await api('POST','/api/reservas',{solicitudId:s.id},201);
+    const nueva = await api('POST','/api/reservas',await confirmacion(s.id),201);
     assert.equal(nueva.fechaSalida,'2027-03-01');
     const cot = await api('POST','/api/cotizaciones',{solicitudId:s.id,descripcion:'Paquete nuevo',total:10.25},201);
-    await api('POST','/api/cotizaciones/'+cot.id+'/estado',{estado:'Aceptada'});
+    await api('POST','/api/cotizaciones/'+cot.id+'/estado',{...await confirmacion(s.id,cot.id),estado:'Aceptada'});
     assert.equal((await api('GET','/api/reservas')).length,2);
     await api('POST','/api/pagos',{reservaId:nueva.id,monto:10.25,metodo:'Efectivo',referencia:'TEST-3'},201);
     assert.equal((await api('GET','/api/reservas/'+nueva.id)).saldoPendiente,0);

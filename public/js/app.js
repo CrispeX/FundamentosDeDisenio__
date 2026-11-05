@@ -12,6 +12,22 @@ const MENU = [
   ['inicio', 'Inicio'], ['clientes', 'Clientes'], ['solicitudes', 'Solicitudes'], ['cotizaciones', 'Cotizaciones'],
   ['reservas', 'Reservas'], ['pagos', 'Pagos'], ['reportes', 'Reportes']
 ];
+let rutasVisitadas=[location.hash || '#/inicio'],posicionRuta=0,moviendoHistorial=false;
+function contextoNavegacion(ruta) {
+  const hash=location.hash || '#/inicio';
+  if(!moviendoHistorial && rutasVisitadas[posicionRuta]!==hash){rutasVisitadas=rutasVisitadas.slice(0,posicionRuta+1);rutasVisitadas.push(hash);posicionRuta++;}
+  moviendoHistorial=false;
+  $('#nav-atras').disabled=posicionRuta===0;
+  $('#nav-adelante').disabled=posicionRuta>=rutasVisitadas.length-1;
+  const titulo=MENU.find(([clave])=>clave===ruta.split('/')[0])?.[1] || 'Página';
+  $('#miga').innerHTML='<a href="#/inicio">Inicio</a>'+ (ruta!=='inicio'?' / <span aria-current="page">'+esc(titulo)+'</span>':'');
+}
+$('#nav-atras').onclick=()=>{if(posicionRuta>0){moviendoHistorial=true;location.hash=rutasVisitadas[--posicionRuta];}};
+$('#nav-adelante').onclick=()=>{if(posicionRuta<rutasVisitadas.length-1){moviendoHistorial=true;location.hash=rutasVisitadas[++posicionRuta];}};
+async function revisarConexion() {
+  try {const estado=await api('GET','/api/estado');$('#conexion').textContent=estado.almacenamiento==='supabase'?'Datos: Supabase conectado':'Modo de práctica · datos locales';$('#conexion').classList.remove('sin-conexion');}
+  catch {$('#conexion').textContent='Conexión de datos pendiente. Revisa la configuración y vuelve a intentar.';$('#conexion').classList.add('sin-conexion');}
+}
 
 function pintarMenu(activo) {
   $('#menu').innerHTML = MENU.map(([clave, texto]) => `
@@ -42,6 +58,8 @@ async function enrutar() {
   const base = ruta.split('/')[0];
   if ($('#dialogo').open) cerrarDialogo();
   pintarMenu(base);
+  contextoNavegacion(ruta);
+  revisarConexion();
   try {
     if (ruta === 'solicitudes/nueva') return vistaNuevaSolicitud();
     if (base === 'inicio') return await vistaInicio();

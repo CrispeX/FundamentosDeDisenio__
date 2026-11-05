@@ -222,3 +222,7 @@ __marimo__/
 # Node y archivos temporales de datos
 node_modules/
 data/*.tmp
+
+# Datos de demostración y revisión locales.
+data/practica.json
+data/practica.json.tmp

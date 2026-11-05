@@ -17,14 +17,17 @@ function obtener(id) {
   return s;
 }
 
-function crear(datos) {
+function validarViaje(datos) {
   const viajeros = Array.isArray(datos.viajeros) ? datos.viajeros : [];
   if (viajeros.length === 0) throw new HttpError(400, 'Agrega al menos un viajero');
+  if (viajeros.length > 30) throw new HttpError(400, 'El perfil admite hasta 30 viajeros');
   const viajerosOk = viajeros.map(p => ({
     nombre: v.requerido(p.nombre, 'nombre del viajero'),
     documento: v.requerido(p.documento, 'documento del viajero'),
     tipo: p.tipo === 'Niño' ? 'Niño' : 'Adulto'
   }));
+  if (new Set(viajerosOk.map(p=>p.documento.toLowerCase())).size !== viajerosOk.length)
+    throw new HttpError(400, 'Los documentos de los viajeros no pueden repetirse');
 
   const d = datos.destino || {};
   const destino = {
@@ -39,6 +42,16 @@ function crear(datos) {
   const presupuesto = p.presupuesto == null || p.presupuesto === '' ? null : Number(p.presupuesto);
   if (presupuesto !== null && (!Number.isFinite(presupuesto) || presupuesto <= 0)) throw new HttpError(400, 'El presupuesto debe ser un número positivo');
   if (p.tipoServicio && !['Paquete', 'Vuelo', 'Hotel'].includes(p.tipoServicio)) throw new HttpError(400, 'Tipo de servicio inválido');
+  if (p.intereses != null && (!Array.isArray(p.intereses) || p.intereses.some(i=>!require('../data/destinos.json').intereses.includes(i))))
+    throw new HttpError(400,'Selecciona intereses válidos');
+  return {viajerosOk,destino,p,presupuesto};
+}
+function preferenciasOk(p,presupuesto) {
+  return {tipoServicio:p.tipoServicio || 'Paquete',presupuesto,
+    intereses:[...new Set(p.intereses || [])],notas:String(p.notas || '').trim()};
+}
+function crear(datos) {
+  const {viajerosOk,destino,p,presupuesto}=validarViaje(datos);
   let cliente;
   if (datos.cliente && datos.cliente.id) {
     cliente = clientes.obtener(datos.cliente.id);
@@ -52,12 +65,7 @@ function crear(datos) {
     clienteId: cliente.id,
     viajeros: viajerosOk,
     destino,
-    preferencias: {
-      tipoServicio: p.tipoServicio || 'Paquete',
-      presupuesto,
-      intereses: Array.isArray(p.intereses) ? [...new Set(p.intereses.filter(i=>require('../data/destinos.json').intereses.includes(i)))] : [],
-      notas: String(p.notas || '').trim()
-    },
+    preferencias: preferenciasOk(p,presupuesto),
     estado: 'Pendiente',
     creadaEn: new Date().toISOString()
   };
@@ -66,4 +74,12 @@ function crear(datos) {
   return enriquecer(solicitud);
 }
 
-module.exports = { listar, obtener, crear };
+function modificarPerfil(id,datos) {
+  const s=obtener(id);
+  if(s.estado !== 'Pendiente')throw new HttpError(409,'Para editar el perfil primero cancela su reserva activa');
+  const {viajerosOk,destino,p,presupuesto}=validarViaje(datos);
+  Object.assign(s,{viajeros:viajerosOk,destino,preferencias:preferenciasOk(p,presupuesto)});
+  for(const c of db.load().cotizaciones.filter(c=>c.solicitudId===s.id && c.estado==='Borrador'))c.estado='Rechazada';
+  db.save();return enriquecer(s);
+}
+module.exports = { listar, obtener, crear, modificarPerfil };

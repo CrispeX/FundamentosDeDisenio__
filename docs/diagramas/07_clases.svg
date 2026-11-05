@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">class Althea :: Modelo de dominio</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Relaciones ortogonales · Composición para objetos contenidos · Dependencia del recomendador</tspan></text>
+<rect x="60" y="185" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="60,240 390,240" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="60,359 390,359" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="225" y="221" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="225" dy="0">Cliente</tspan></text>
+<text x="76" y="273" font-size="23" font-weight="normal" text-anchor="start"><tspan x="76" dy="0">- id: entero</tspan><tspan x="76" dy="31.05">- nombre: texto</tspan><tspan x="76" dy="31.05">- correo: texto</tspan></text>
+<text x="76" y="396" font-size="23" font-weight="normal" text-anchor="start"><tspan x="76" dy="0">+ crear()</tspan><tspan x="76" dy="31.05">+ modificar()</tspan></text>
+<rect x="525" y="185" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="525,240 855,240" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="525,359 855,359" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="690" y="221" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="690" dy="0">Solicitud</tspan></text>
+<text x="541" y="273" font-size="23" font-weight="normal" text-anchor="start"><tspan x="541" dy="0">- id: entero</tspan><tspan x="541" dy="31.05">- destino: texto</tspan><tspan x="541" dy="31.05">- estado: EstadoSolicitud</tspan></text>
+<text x="541" y="396" font-size="23" font-weight="normal" text-anchor="start"><tspan x="541" dy="0">+ crear()</tspan><tspan x="541" dy="31.05">+ modificarPerfil()</tspan></text>
+<rect x="990" y="185" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="990,240 1320,240" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="990,359 1320,359" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1155" y="221" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="1155" dy="0">Cotización</tspan></text>
+<text x="1006" y="273" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1006" dy="0">- id: entero</tspan><tspan x="1006" dy="31.05">- total: dinero</tspan><tspan x="1006" dy="31.05">- estado: EstadoCotización</tspan></text>
+<text x="1006" y="396" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1006" dy="0">+ modificar()</tspan><tspan x="1006" dy="31.05">+ resolver()</tspan></text>
+<rect x="1455" y="185" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="1455,240 1785,240" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="1455,359 1785,359" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1620" y="221" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="1620" dy="0">Reserva</tspan></text>
+<text x="1471" y="273" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1471" dy="0">- id: entero</tspan><tspan x="1471" dy="31.05">- asientos: texto[]</tspan><tspan x="1471" dy="31.05">- políticas: aceptación</tspan></text>
+<text x="1471" y="396" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1471" dy="0">+ vistaPrevia()</tspan><tspan x="1471" dy="31.05">+ crear() / cancelar()</tspan></text>
+<rect x="60" y="690" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="60,745 390,745" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="60,864 390,864" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="225" y="726" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="225" dy="0">Viajero</tspan></text>
+<text x="76" y="778" font-size="23" font-weight="normal" text-anchor="start"><tspan x="76" dy="0">- nombre: texto</tspan><tspan x="76" dy="31.05">- documento: texto</tspan><tspan x="76" dy="31.05">- tipo: Adulto | Niño</tspan></text>
+<text x="76" y="901" font-size="23" font-weight="normal" text-anchor="start"><tspan x="76" dy="0">+ validarDatos()</tspan></text>
+<rect x="525" y="690" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="525,745 855,745" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="525,864 855,864" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="690" y="726" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="690" dy="0">PerfilViaje</tspan></text>
+<text x="541" y="778" font-size="23" font-weight="normal" text-anchor="start"><tspan x="541" dy="0">- fechas: fecha[]</tspan><tspan x="541" dy="31.05">- presupuesto: dinero</tspan><tspan x="541" dy="31.05">- intereses: texto[]</tspan></text>
+<text x="541" y="901" font-size="23" font-weight="normal" text-anchor="start"><tspan x="541" dy="0">+ validarViaje()</tspan><tspan x="541" dy="31.05">+ guardarPerfil()</tspan></text>
+<rect x="990" y="690" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="990,745 1320,745" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="990,864 1320,864" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1155" y="726" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="1155" dy="0">Recomendador</tspan></text>
+<text x="1006" y="778" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1006" dy="0">- catálogo: Destino[]</tspan><tspan x="1006" dy="31.05">- modo: IA | local</tspan></text>
+<text x="1006" y="901" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1006" dy="0">+ recomendar(perfil)</tspan><tspan x="1006" dy="31.05">+ sugerenciasLocales()</tspan></text>
+<rect x="1455" y="690" width="330" height="270" rx="0" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<polyline points="1455,745 1785,745" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="1455,864 1785,864" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1620" y="726" font-size="27" font-weight="bold" text-anchor="middle"><tspan x="1620" dy="0">Pago</tspan></text>
+<text x="1471" y="778" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1471" dy="0">- monto: dinero</tspan><tspan x="1471" dy="31.05">- referencia: texto</tspan><tspan x="1471" dy="31.05">- estado: EstadoPago</tspan></text>
+<text x="1471" y="901" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1471" dy="0">+ registrarPago()</tspan><tspan x="1471" dy="31.05">+ anularPago()</tspan></text>
+<polyline points="390,310 525,310" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="405" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="405" dy="0">1</tspan></text>
+<text x="465" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="465" dy="0">0..*</tspan></text>
+<text x="410" y="345" font-size="21" font-weight="normal" text-anchor="start"><tspan x="410" dy="0">solicita</tspan></text>
+<polyline points="855,310 990,310" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="870" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="870" dy="0">1</tspan></text>
+<text x="930" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="930" dy="0">0..*</tspan></text>
+<text x="875" y="345" font-size="21" font-weight="normal" text-anchor="start"><tspan x="875" dy="0">origina</tspan></text>
+<polyline points="1320,310 1455,310" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1333" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1333" dy="0">0..1</tspan></text>
+<text x="1405" y="292" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1405" dy="0">0..1</tspan></text>
+<polygon points="595,455 586,469 595,483 604,469" fill="#222"/>
+<polyline points="595,483 595,570 225,570 225,690" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="235" y="668" font-size="22" font-weight="normal" text-anchor="start"><tspan x="235" dy="0">1..30</tspan></text>
+<text x="610" y="495" font-size="22" font-weight="normal" text-anchor="start"><tspan x="610" dy="0">1</tspan></text>
+<polygon points="735,455 726,469 735,483 744,469" fill="#222"/>
+<polyline points="735,483 735,690" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="750" y="660" font-size="22" font-weight="normal" text-anchor="start"><tspan x="750" dy="0">1</tspan></text>
+<text x="750" y="500" font-size="22" font-weight="normal" text-anchor="start"><tspan x="750" dy="0">1</tspan></text>
+<polyline points="990,825 855,825" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" stroke-dasharray="9 6"/>
+<text x="871" y="802" font-size="22" font-weight="normal" text-anchor="start"><tspan x="871" dy="0">usa</tspan></text>
+<polygon points="1620,455 1611,469 1620,483 1629,469" fill="#222"/>
+<polyline points="1620,483 1620,690" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="1635" y="500" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1635" dy="0">1</tspan></text>
+<text x="1635" y="660" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1635" dy="0">0..*</tspan></text>
+<polyline points="780,185 780,145 1690,145 1690,185" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="795" y="173" font-size="22" font-weight="normal" text-anchor="start"><tspan x="795" dy="0">1</tspan></text>
+<text x="1610" y="173" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1610" dy="0">0..*</tspan></text>
+<text x="1120" y="135" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1120" dy="0">Solicitud genera reservas</tspan></text>
+<text x="1010" y="660" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1010" dy="0">«servicio»</tspan></text>
+</g></svg>

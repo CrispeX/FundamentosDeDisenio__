@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node tests/integration.test.js && node tests/frontend.test.js && node tests/recomendaciones.test.js && node tests/supabase.test.js",
+    "test": "node --test tests/integration.test.js tests/frontend.test.js tests/recomendaciones.test.js tests/supabase.test.js tests/reserva-revision.test.js",
     "db:check": "node scripts/check-db.js",
-    "db:import": "node scripts/import-json.js"
+    "db:import": "node scripts/import-json.js",
+    "demo": "node scripts/demo.js"
   },
   "engines": {
     "node": ">=18"

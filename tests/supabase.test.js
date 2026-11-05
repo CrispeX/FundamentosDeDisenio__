@@ -6,7 +6,7 @@ const clientes=require('../src/services/clientes.service');
 const {HttpError}=require('../src/utils/errors');
 const proyecto='ciwkgqdpogteheeyigxb';
 const url='https://'+proyecto+'.supabase.co';
-const estado=()=>({revision:0,data:{seq:{clientes:0,solicitudes:0,reservas:0,cotizaciones:0,pagos:0},clientes:[],solicitudes:[],reservas:[],cotizaciones:[],pagos:[],destinos:[]}});
+const estado=()=>({revision:0,data:{reservasRevision:2,seq:{clientes:0,solicitudes:0,reservas:0,cotizaciones:0,pagos:0},clientes:[],solicitudes:[],reservas:[],cotizaciones:[],pagos:[],destinos:[]}});
 const respuesta=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json'}});
 test('El adaptador usa RPC y mantiene la clave fuera de URL y cuerpo',async()=>{
   const peticiones=[];
@@ -61,4 +61,34 @@ test('Una escritura fallida no devuelve éxito y los conflictos tienen límite',
   const sesion=db.crearSesionRemota({leer:async()=>estado(),guardar:async()=>{intentos++;const e=new HttpError(409,'Conflicto');e.reintentar=true;throw e;}});
   await assert.rejects(()=>sesion(()=>clientes.crear({nombre:'Prueba',correo:'limite@example.test',telefono:'3000000000'})),e=>e.status===409);
   assert.equal(intentos,4);
+});
+
+test('Un esquema anterior no pierde silenciosamente los campos de la reserva',async()=>{
+  let guardados=0;
+  const anterior=estado();delete anterior.data.reservasRevision;
+  const sesion=db.crearSesionRemota({leer:async()=>structuredClone(anterior),guardar:async()=>guardados++});
+  await assert.rejects(()=>sesion(()=>clientes.crear({nombre:'Prueba',correo:'esquema@example.test',telefono:'3000000000'})),e=>e.status===503);
+  assert.equal(guardados,0);
+});
+
+test('Dos confirmaciones concurrentes del mismo asiento dejan solo una reserva',async()=>{
+  const reservas=require('../src/services/reservas.service');
+  let persistido=estado();
+  persistido.data.clientes=[{id:1,nombre:'Prueba',correo:'asiento@example.test',telefono:'3000000000'}];
+  persistido.data.solicitudes=[1,2].map(id=>({id,clienteId:1,viajeros:[{nombre:'Prueba',documento:'T-'+id,tipo:'Adulto'}],destino:{origen:'Medellín',destino:'Cartagena',fechaSalida:'2030-03-01',fechaRegreso:'2030-03-05'},preferencias:{tipoServicio:'Vuelo',intereses:[]},estado:'Pendiente'}));
+  const sesion=db.crearSesionRemota({leer:async()=>structuredClone(persistido),guardar:async(revision,data)=>{
+    if(revision!==persistido.revision){const e=new HttpError(409,'Conflicto');e.reintentar=true;throw e;}
+    persistido={revision:revision+1,data:structuredClone(data)};
+  }});
+  const cuerpos=[];
+  for(const solicitudId of [1,2]){
+    const d={solicitudId,asientos:['1A'],politicasAceptadas:true};
+    const p=await sesion(()=>reservas.vistaPrevia(d));cuerpos.push({...d,vistaPreviaToken:p.vistaPreviaToken});
+  }
+  const resultados=await Promise.allSettled(cuerpos.map(d=>sesion(()=>reservas.crear(d))));
+  assert.equal(resultados.filter(r=>r.status==='fulfilled').length,1);
+  assert.equal(resultados.find(r=>r.status==='rejected').reason.status,409);
+  assert.equal(persistido.data.reservas.length,1);
+  assert.deepEqual(persistido.data.reservas[0].asientos,['1A']);
+  assert.equal(persistido.data.reservas[0].oferta.perfil.destino.destino,'Cartagena');
 });

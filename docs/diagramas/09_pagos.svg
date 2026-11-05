@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">stm Althea :: Registro de pagos y saldo</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">El registro de abonos y el estado financiero de la reserva son objetos diferentes.</tspan></text>
+<rect x="60" y="150" width="1800" height="300" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="150" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="179" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Objeto: Pago</tspan></text>
+<circle cx="120" cy="300" r="11" fill="#222"/>
+<rect x="300" y="255" width="350" height="90" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="475" y="308" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="475" dy="0">Registrado</tspan></text>
+<rect x="1260" y="255" width="350" height="90" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1435" y="308" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1435" dy="0">Anulado</tspan></text>
+<polyline points="132,300 300,300" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="150" y="220" font-size="23" font-weight="normal" text-anchor="start"><tspan x="150" dy="0">registrar [monto ≤ saldo]</tspan></text>
+<polyline points="650,300 1260,300" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="790" y="278" font-size="25" font-weight="normal" text-anchor="start"><tspan x="790" dy="0">anularPago / recalcular saldo</tspan></text>
+<polyline points="1610,300 1740,300" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="1760" cy="300" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="1760" cy="300" r="10" fill="#222"/>
+<rect x="60" y="500" width="1800" height="500" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="500" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="529" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Reserva: reglas del saldo y estado financiero</tspan></text>
+<text x="105" y="610" font-size="27" font-weight="bold" text-anchor="start"><tspan x="105" dy="0">Condición del objeto Reserva</tspan></text>
+<text x="1030" y="610" font-size="27" font-weight="bold" text-anchor="start"><tspan x="1030" dy="0">Estado y resultado</tspan></text>
+<polyline points="100,683 1815,683" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="105" y="665" font-size="25" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">Sin cotización aceptada</tspan></text>
+<text x="1030" y="665" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1030" dy="0">Sin cotización · no admite pagos</tspan></text>
+<polyline points="100,743 1815,743" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="105" y="725" font-size="25" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">Total &gt; 0 y pagado = 0</tspan></text>
+<text x="1030" y="725" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1030" dy="0">Pendiente · saldo = total</tspan></text>
+<polyline points="100,803 1815,803" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="105" y="785" font-size="25" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">0 &lt; pagado &lt; total</tspan></text>
+<text x="1030" y="785" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1030" dy="0">Parcial · saldo = total − pagado</tspan></text>
+<polyline points="100,863 1815,863" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="105" y="845" font-size="25" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">Pagado = total</tspan></text>
+<text x="1030" y="845" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1030" dy="0">Pagada · saldo = 0</tspan></text>
+<polyline points="100,923 1815,923" fill="none" stroke="#333" stroke-width="2.5"  />
+<text x="105" y="905" font-size="25" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">Reserva cancelada</tspan></text>
+<text x="1030" y="905" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1030" dy="0">Cancelada · saldo = 0; no admite pagos</tspan></text>
+<text x="105" y="982" font-size="23" font-weight="normal" text-anchor="start"><tspan x="105" dy="0">Pagado = suma de abonos Registrados. Anular un abono recalcula el saldo.</tspan></text>
+</g></svg>

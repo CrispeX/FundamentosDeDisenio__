@@ -45,7 +45,10 @@ function crearSesionRemota(almacen) {
       try {
         return await contexto.run(sesion,async()=>{
           const resultado=await accion();
-          if(sesion.modificado)await almacen.guardar(snapshot.revision,sesion.data);
+          if(sesion.modificado) {
+            if(snapshot.data.reservasRevision!==2)throw new HttpError(503,'Actualiza el esquema de Althea con database/actualizar_reservas_revision.sql antes de guardar.');
+            await almacen.guardar(snapshot.revision,sesion.data);
+          }
           return resultado;
         });
       } catch(err) {
@@ -64,6 +67,6 @@ async function comprobarConexion() {
   if(config.STORAGE==='json'){load();return;}
   if(config.STORAGE!=='supabase')throw new HttpError(503,'ALTHEA_STORAGE debe ser supabase o json.');
   remoto.comprobarConfiguracion();
-  await sesionRemota(()=>load());
+  await sesionRemota(()=>{if(load().reservasRevision!==2)throw new HttpError(503,'El esquema de Althea necesita la actualización de reservas.');return load();});
 }
 module.exports={load,save,nextId,request,comprobarConexion,crearSesionRemota};

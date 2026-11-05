@@ -85,15 +85,14 @@ async function gestionarSolicitudes() {
       const vigente = cotizaciones.some(c => c.solicitudId === s.id && ['Borrador', 'Aceptada'].includes(c.estado));
       return `<tr><td>SOL-${String(s.id).padStart(4, '0')}</td><td>${esc(s.cliente?.nombre)}</td><td>${esc(s.destino.origen)} → ${esc(s.destino.destino)}</td><td>${fmtFecha(s.destino.fechaSalida)} – ${fmtFecha(s.destino.fechaRegreso)}</td><td><span class="badge ${s.estado}">${s.estado}</span></td><td><div class="acciones">
       ${botonAccion('Ver detalle', 'data-detalle-sol', s.id)}
+      ${s.estado==='Pendiente'?botonAccion('Editar perfil', 'data-perfil-sol', s.id):''}
       ${!vigente ? botonAccion('Cotizar', 'data-cotizar', s.id) : '<a class="btn btn-chico btn-soft" href="#/cotizaciones">Ver cotización</a>'}
       ${s.estado === 'Pendiente' ? botonAccion('Crear reserva', 'data-reservar-sol', s.id) : '<a class="btn btn-chico btn-soft" href="#/reservas">Ver reservas</a>'}</div></td></tr>`;
     }), 'No hay solicitudes para esta búsqueda.');
     enlazarAccion('data-detalle-sol', lista, detalleSolicitud);
+    enlazarAccion('data-perfil-sol', lista, editarPerfil);
     enlazarAccion('data-cotizar', lista, s => formularioCotizacion(null, [s], gestionarSolicitudes));
-    enlazarAccion('data-reservar-sol', lista, async s => {
-      const r = await api('POST', '/api/reservas', { solicitudId: s.id });
-      toast(`Reserva ${r.codigo} confirmada`); location.hash = '#/reservas';
-    });
+    enlazarAccion('data-reservar-sol', lista, s => iniciarReserva(s));
   });
 }
 async function gestionarCotizaciones() {
@@ -112,7 +111,7 @@ async function gestionarCotizaciones() {
       ${c.estado === 'Borrador' ? botonAccion('Editar', 'data-editar-cot', c.id) + botonAccion('Aceptar y reservar', 'data-aceptar-cot', c.id) + botonAccion('Rechazar', 'data-rechazar-cot', c.id, true) : ''}</div></td></tr>`), 'No hay cotizaciones para esta búsqueda.');
     enlazarAccion('data-ver-cot', lista, c => abrirDialogo(c.codigo, `<dl><dt>Cliente</dt><dd>${esc(c.solicitud.cliente?.nombre)}</dd><dt>Servicio</dt><dd class="texto-multilinea">${esc(c.descripcion)}</dd><dt>Total</dt><dd>${fmtMoneda(c.total)}</dd><dt>Estado</dt><dd>${c.estado}</dd></dl>`));
     enlazarAccion('data-editar-cot', lista, c => formularioCotizacion(c, [c.solicitud], gestionarCotizaciones));
-    enlazarAccion('data-aceptar-cot', lista, c => confirmarCotizacion(c, 'Aceptada'));
+    enlazarAccion('data-aceptar-cot', lista, c => iniciarReserva(c.solicitud,c));
     enlazarAccion('data-rechazar-cot', lista, c => confirmarCotizacion(c, 'Rechazada'));
   });
 }

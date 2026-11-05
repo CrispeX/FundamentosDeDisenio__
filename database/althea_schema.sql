@@ -64,6 +64,9 @@ create table public.althea_reservas (
   estado text not null check (estado in ('Confirmada','Cancelada')),
   cotizacion_id bigint unique references public.althea_cotizaciones(id) deferrable initially deferred,
   total numeric(16,2) check (total > 0),
+  oferta jsonb,
+  asientos jsonb not null default '[]'::jsonb check (jsonb_typeof(asientos)='array'),
+  politicas jsonb,
   creada_en timestamptz not null default now(),
   foreign key(solicitud_id,cliente_id) references public.althea_solicitudes(id,cliente_id)
 );
@@ -105,6 +108,7 @@ create function public.althea_read_state() returns jsonb
 language sql stable security invoker set search_path = ''
 as $function$
 select jsonb_build_object('revision',m.revision,'data',jsonb_build_object(
+  'reservasRevision',2,
   'seq',m.secuencias,
   'clientes',coalesce((select jsonb_agg(jsonb_build_object('id',c.id,'nombre',c.nombre,'correo',c.correo,'telefono',c.telefono) order by c.id) from public.althea_clientes c),'[]'::jsonb),
   'solicitudes',coalesce((select jsonb_agg(jsonb_build_object(
@@ -112,7 +116,7 @@ select jsonb_build_object('revision',m.revision,'data',jsonb_build_object(
     'preferencias',jsonb_build_object('tipoServicio',s.tipo_servicio,'presupuesto',s.presupuesto,'intereses',s.intereses,'notas',s.notas),
     'viajeros',coalesce((select jsonb_agg(jsonb_build_object('nombre',v.nombre,'documento',v.documento,'tipo',v.tipo) order by v.posicion) from public.althea_viajeros v where v.solicitud_id=s.id),'[]'::jsonb),
     'estado',s.estado,'creadaEn',s.creada_en) order by s.id) from public.althea_solicitudes s),'[]'::jsonb),
-  'reservas',coalesce((select jsonb_agg(jsonb_strip_nulls(jsonb_build_object('id',r.id,'codigo',r.codigo,'solicitudId',r.solicitud_id,'clienteId',r.cliente_id,'fechaSalida',r.fecha_salida,'fechaRegreso',r.fecha_regreso,'estado',r.estado,'cotizacionId',r.cotizacion_id,'total',r.total,'creadaEn',r.creada_en)) order by r.id) from public.althea_reservas r),'[]'::jsonb),
+  'reservas',coalesce((select jsonb_agg(jsonb_strip_nulls(jsonb_build_object('id',r.id,'codigo',r.codigo,'solicitudId',r.solicitud_id,'clienteId',r.cliente_id,'fechaSalida',r.fecha_salida,'fechaRegreso',r.fecha_regreso,'estado',r.estado,'cotizacionId',r.cotizacion_id,'total',r.total,'oferta',r.oferta,'asientos',r.asientos,'politicas',r.politicas,'creadaEn',r.creada_en)) order by r.id) from public.althea_reservas r),'[]'::jsonb),
   'cotizaciones',coalesce((select jsonb_agg(jsonb_strip_nulls(jsonb_build_object('id',c.id,'codigo',c.codigo,'solicitudId',c.solicitud_id,'descripcion',c.descripcion,'total',c.total,'estado',c.estado,'reservaId',c.reserva_id,'creadaEn',c.creada_en)) order by c.id) from public.althea_cotizaciones c),'[]'::jsonb),
   'pagos',coalesce((select jsonb_agg(jsonb_strip_nulls(jsonb_build_object('id',p.id,'codigo',p.codigo,'reservaId',p.reserva_id,'monto',p.monto,'metodo',p.metodo,'referencia',p.referencia,'estado',p.estado,'creadaEn',p.creada_en,'anuladoEn',p.anulado_en)) order by p.id) from public.althea_pagos p),'[]'::jsonb),
   'destinos',coalesce((select jsonb_agg(jsonb_build_object('id',d.id,'nombre',d.nombre,'pais',d.pais,'intereses',d.intereses,'nivel',d.nivel,'familiar',d.familiar,'diasMinimos',d.dias_minimos,'region',d.region,'actividades',d.actividades) order by d.id) from public.althea_destinos d),'[]'::jsonb)
@@ -183,9 +187,9 @@ begin
     on conflict(id) do update set descripcion=excluded.descripcion,total=excluded.total,estado=excluded.estado,reserva_id=excluded.reserva_id;
   end loop;
   for item in select j from jsonb_array_elements(payload->'reservas') j order by (j->>'id')::bigint loop
-    insert into public.althea_reservas values ((item->>'id')::bigint,item->>'codigo',(item->>'solicitudId')::bigint,(item->>'clienteId')::bigint,
-      (item->>'fechaSalida')::date,(item->>'fechaRegreso')::date,item->>'estado',(item->>'cotizacionId')::bigint,(item->>'total')::numeric,(item->>'creadaEn')::timestamptz)
-    on conflict(id) do update set fecha_salida=excluded.fecha_salida,fecha_regreso=excluded.fecha_regreso,estado=excluded.estado,cotizacion_id=excluded.cotizacion_id,total=excluded.total;
+    insert into public.althea_reservas(id,codigo,solicitud_id,cliente_id,fecha_salida,fecha_regreso,estado,cotizacion_id,total,oferta,asientos,politicas,creada_en) values ((item->>'id')::bigint,item->>'codigo',(item->>'solicitudId')::bigint,(item->>'clienteId')::bigint,
+      (item->>'fechaSalida')::date,(item->>'fechaRegreso')::date,item->>'estado',(item->>'cotizacionId')::bigint,(item->>'total')::numeric,item->'oferta',coalesce(item->'asientos','[]'::jsonb),item->'politicas',(item->>'creadaEn')::timestamptz)
+    on conflict(id) do update set fecha_salida=excluded.fecha_salida,fecha_regreso=excluded.fecha_regreso,estado=excluded.estado,cotizacion_id=excluded.cotizacion_id,total=excluded.total,oferta=excluded.oferta,asientos=excluded.asientos,politicas=excluded.politicas;
   end loop;
   for item in select j from jsonb_array_elements(payload->'pagos') j order by (j->>'id')::bigint loop
     insert into public.althea_pagos values ((item->>'id')::bigint,item->>'codigo',(item->>'reservaId')::bigint,(item->>'monto')::numeric,

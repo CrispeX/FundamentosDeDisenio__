@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif"><rect width="700" height="900" fill="white"/>
+<text x="30" y="55" font-size="27" font-weight="bold" text-anchor="start"><tspan x="30" dy="0">act Althea :: Capturar y revisar perfil</tspan></text>
+<circle cx="350" cy="105" r="11" fill="#222"/>
+<polyline points="350,116 350,160" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="60" y="160" width="580" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="193" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Cliente</tspan><tspan x="350" dy="33.75">Buscar o registrar</tspan></text>
+<polyline points="350,240 350,280" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="60" y="280" width="580" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="313" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Viajeros</tspan><tspan x="350" dy="33.75">Nombres, documentos y tipo</tspan></text>
+<polyline points="350,360 350,400" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="60" y="400" width="580" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="433" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Destino y fechas</tspan><tspan x="350" dy="33.75">Origen, salida y regreso</tspan></text>
+<polyline points="350,480 350,520" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="60" y="520" width="580" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="553" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Preferencias e ideas</tspan><tspan x="350" dy="33.75">Servicio, presupuesto e intereses</tspan></text>
+<polyline points="350,600 350,640" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="60" y="640" width="580" height="80" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="350" y="673" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="350" dy="0">Revisión</tspan><tspan x="350" dy="33.75">Comprobar y guardar solicitud</tspan></text>
+<polyline points="350,720 350,800" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="350" cy="820" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="350" cy="820" r="10" fill="#222"/>
+</g></svg>

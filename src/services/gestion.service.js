@@ -46,14 +46,7 @@ function resolverCotizacion(id, datos) {
   if (!['Aceptada', 'Rechazada'].includes(datos.estado)) throw new HttpError(400, 'Estado de cotización inválido');
   let reserva;
   if (datos.estado === 'Aceptada') {
-    reserva = db.load().reservas.find(r => r.solicitudId === c.solicitudId && r.estado !== 'Cancelada');
-    if (reserva?.cotizacionId) throw new HttpError(409, 'La reserva ya tiene una cotización aceptada');
-    if (!reserva) {
-      const nueva = reservas.crear({ solicitudId: c.solicitudId });
-      reserva = db.load().reservas.find(r => r.id === nueva.id);
-    }
-    reserva.cotizacionId = c.id;
-    reserva.total = c.total;
+    reserva = reservas.crear({ ...datos, solicitudId: c.solicitudId, cotizacionId:c.id });
     c.reservaId = reserva.id;
   }
   c.estado = datos.estado; db.save();

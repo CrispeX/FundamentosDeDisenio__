@@ -6,11 +6,16 @@ const solicitudes = require('../controllers/solicitudes.controller');
 const reservas = require('../controllers/reservas.controller');
 
 const gestion = require('../services/gestion.service');
+const reservaService = require('../services/reservas.service');
+const solicitudService = require('../services/solicitudes.service');
 
 const { crearRecomendador } = require('../services/recomendaciones.service');
 const recomendar = crearRecomendador({apiKey:process.env.OPENAI_API_KEY,model:process.env.OPENAI_MODEL || 'gpt-4.1-mini',cargarCatalogo:()=>{const data=db.load();return {intereses:require('../data/destinos.json').intereses,destinos:data.destinos || require('../data/destinos.json').destinos};}});
 
 const definiciones = [
+  ['GET', '/api/disponibilidad', ({query}) => reservaService.disponibilidad(query.solicitudId,query.cotizacionId)],
+  ['POST', '/api/reservas/vista-previa', ({body}) => reservaService.vistaPrevia(body)],
+  ['PATCH', '/api/solicitudes/:id/perfil', ({params,body}) => solicitudService.modificarPerfil(params.id,body)],
   ['POST', '/api/recomendaciones', ({body}) => recomendar(body)],
   ['PATCH', '/api/clientes/:id', ({params, body}) => clientes.modificar({params, body})],
   ['GET', '/api/cotizaciones', () => gestion.listarCotizaciones()],
@@ -40,6 +45,10 @@ const rutas = definiciones.map(([metodo, patron, handler]) => ({
 async function handleApi(req, res) {
   const url = new URL(req.url, 'http://localhost');
   try {
+    if(req.method==='GET' && url.pathname==='/api/estado') {
+      await db.comprobarConexion();
+      return sendJson(res,200,{conectado:true,almacenamiento:require('../config').STORAGE});
+    }
     for (const ruta of rutas) {
       const m = url.pathname.match(ruta.regex);
       if (!m || ruta.metodo !== req.method) continue;

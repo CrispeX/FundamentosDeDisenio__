@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">stm Althea :: Estados de entidades del viaje</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Los rectángulos representan estados; los eventos y las guardas se escriben en las transiciones.</tspan></text>
+<rect x="60" y="155" width="1800" height="235" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="155" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="184" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Objeto: Solicitud</tspan></text>
+<circle cx="120" cy="275" r="11" fill="#222"/>
+<rect x="230" y="230" width="340" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="400" y="280.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="400" dy="0">Pendiente</tspan></text>
+<rect x="1320" y="230" width="340" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1490" y="280.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1490" dy="0">Reservada</tspan></text>
+<polyline points="132,275 230,275" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="570,255 1320,255" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="690" y="236" font-size="24" font-weight="normal" text-anchor="start"><tspan x="690" dy="0">confirmarReserva [vista válida y cupos]</tspan></text>
+<polyline points="1320,300 1320,350 400,350 400,315" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="690" y="337" font-size="24" font-weight="normal" text-anchor="start"><tspan x="690" dy="0">cancelarReserva / liberar cupos</tspan></text>
+<rect x="60" y="430" width="1800" height="235" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="430" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="459" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Objeto: Reserva</tspan></text>
+<circle cx="120" cy="550" r="11" fill="#222"/>
+<rect x="230" y="505" width="340" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="400" y="555.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="400" dy="0">Confirmada</tspan></text>
+<rect x="1320" y="505" width="340" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1490" y="555.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1490" dy="0">Cancelada</tspan></text>
+<polyline points="132,550 230,550" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="570,550 1320,550" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="690" y="528" font-size="24" font-weight="normal" text-anchor="start"><tspan x="690" dy="0">cancelar [totalPagado = 0] / liberar cupos</tspan></text>
+<polyline points="1660,550 1745,550" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="1765" cy="550" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="1765" cy="550" r="10" fill="#222"/>
+<polyline points="320,590 320,630 520,630 520,590" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="620" y="632" font-size="23" font-weight="normal" text-anchor="start"><tspan x="620" dy="0">modificarFechas [cupos y asientos libres]</tspan></text>
+<rect x="60" y="705" width="1800" height="315" rx="0" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="60" y="705" width="620" height="42" rx="0" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="75" y="734" font-size="23" font-weight="bold" text-anchor="start"><tspan x="75" dy="0">Objeto: Cotización</tspan></text>
+<circle cx="120" cy="835" r="11" fill="#222"/>
+<rect x="230" y="790" width="320" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="390" y="840.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="390" dy="0">Borrador</tspan></text>
+<rect x="800" y="750" width="320" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="960" y="800.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="960" dy="0">Aceptada</tspan></text>
+<rect x="1420" y="750" width="320" height="85" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1580" y="800.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1580" dy="0">Cancelada</tspan></text>
+<rect x="800" y="910" width="320" height="75" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="960" y="955.5" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="960" dy="0">Rechazada</tspan></text>
+<polyline points="132,835 230,835" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="550,810 650,810 650,790 800,790" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="560" y="775" font-size="23" font-weight="normal" text-anchor="start"><tspan x="560" dy="0">aceptar [vista válida]</tspan></text>
+<polyline points="1120,790 1420,790" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1150" y="765" font-size="22" font-weight="normal" text-anchor="start"><tspan x="1150" dy="0">cancelarReserva</tspan></text>
+<polyline points="550,855 650,855 650,947 800,947" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="80" y="985" font-size="22" font-weight="normal" text-anchor="start"><tspan x="80" dy="0">rechazar / editarPerfil</tspan></text>
+<polyline points="1740,790 1790,790 1790,947 1120,947" fill="none" stroke="#333" stroke-width="2.5"  />
+<polyline points="1790,947 1815,947" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="1835" cy="947" r="16" fill="#fff" stroke="#222" stroke-width="2.5"/><circle cx="1835" cy="947" r="10" fill="#222"/>
+</g></svg>

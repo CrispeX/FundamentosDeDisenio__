@@ -11,6 +11,25 @@
   --obligatorio: #2200dd;
   --error: #b3261e;
 }
+.identidad-modulo {display:flex;flex-direction:column;gap:4px;color:var(--titulo);margin-right:auto;padding-left:22px;}
+.identidad-modulo span {font-size:12px;}
+.navegacion-contexto {padding:18px 40px 8px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;}
+.navegacion-contexto a {color:var(--titulo);}
+.navegacion-contexto>div {display:flex;gap:8px;}
+.estado-conexion {margin:8px 40px 0;padding:8px 12px;background:#edf7f3;border-radius:8px;font-size:12px;color:#245442;}
+.estado-conexion.sin-conexion {background:#fff0ed;color:var(--error);}
+.resumen-perfil {display:grid;grid-template-columns:160px 1fr;gap:9px 18px;margin:18px 0 28px;}
+.resumen-perfil dt {font-weight:700;color:var(--titulo);}
+.resumen-perfil dd {margin:0;overflow-wrap:anywhere;}
+.mapa-asientos {display:grid;grid-template-columns:repeat(4,48px);gap:8px;margin:16px auto;width:max-content;}
+.asiento {border:1px solid #3d826c;border-radius:8px;background:#edf7f3;color:#245442;padding:7px;text-align:center;font-size:13px;}
+.asiento.ocupado {border-color:#bdc3cc;background:#e8eaf0;color:#626975;}
+.politicas {border:1px solid #bbcfdb;border-radius:8px;margin:22px 0;padding:14px;font-size:14px;line-height:1.6;}
+.politicas summary {font-weight:700;cursor:pointer;}
+.politicas li {margin:8px 0;}
+.aceptacion {display:flex;align-items:flex-start;gap:12px;font-weight:600;font-size:14px;line-height:1.5;}
+.aceptacion input {width:20px;height:20px;flex:none;margin-top:2px;}
+@media(max-width:640px){.navegacion-contexto{padding:14px 16px 8px}.estado-conexion{margin:8px 16px 0}.identidad-modulo{padding-left:12px;font-size:13px}.identidad-modulo span{display:none}.resumen-perfil{grid-template-columns:1fr;gap:5px}.resumen-perfil dd{margin-bottom:10px}.stepper{flex-wrap:wrap;row-gap:10px}.conector{width:12px}}
 
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }

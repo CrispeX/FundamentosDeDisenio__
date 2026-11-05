@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">cmp Althea :: Arquitectura y alcance comprobado</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Aplicación Node.js sin dependencias de ejecución · Interfaz del asesor comercial</tspan></text>
+<rect x="100" y="250" width="400" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="300" y="303" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="300" dy="0">Navegador</tspan><tspan x="300" dy="33.75">Clientes · Perfil · Reservas</tspan><tspan x="300" dy="33.75">Abonos · Reportes</tspan></text>
+<rect x="730" y="250" width="450" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="955" y="303" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="955" dy="0">Servidor Node.js</tspan><tspan x="955" dy="33.75">Validaciones y servicios</tspan><tspan x="955" dy="33.75">Vista previa e inventario</tspan></text>
+<rect x="1430" y="250" width="400" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1630" y="303" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1630" dy="0">Supabase autorizado</tspan><tspan x="1630" dy="33.75">Tablas althea_*</tspan><tspan x="1630" dy="33.75">RPC y revisión atómica</tspan></text>
+<polyline points="500,325 730,325" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="555" y="300" font-size="23" font-weight="normal" text-anchor="start"><tspan x="555" dy="0">HTTP / JSON</tspan></text>
+<polyline points="1180,325 1430,325" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="1210" y="300" font-size="23" font-weight="normal" text-anchor="start"><tspan x="1210" dy="0">RPC privada</tspan></text>
+<rect x="100" y="610" width="400" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="300" y="663" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="300" dy="0">Modo de práctica</tspan><tspan x="300" dy="33.75">Archivo JSON aislado</tspan><tspan x="300" dy="33.75">Pruebas sin conexión</tspan></text>
+<rect x="730" y="610" width="450" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="955" y="663" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="955" dy="0">Recomendador</tspan><tspan x="955" dy="33.75">OpenAI si hay clave propia</tspan><tspan x="955" dy="33.75">Catálogo si falta o falla</tspan></text>
+<rect x="1430" y="610" width="400" height="150" rx="12" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1630" y="663" font-size="25" font-weight="normal" text-anchor="middle"><tspan x="1630" dy="0">Inventario interno</tspan><tspan x="1630" dy="33.75">Cupos por salida y servicio</tspan><tspan x="1630" dy="33.75">Asientos por viajero</tspan></text>
+<polyline points="730,360 615,360 615,685 500,685" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="950,400 950,610" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="1180,360 1290,360 1290,685 1430,685" fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="100" y="850" width="1730" height="150" rx="8" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+<text x="130" y="892" font-size="27" font-weight="bold" text-anchor="start"><tspan x="130" dy="0">Estado de la entrega</tspan></text>
+<text x="130" y="936" font-size="25" font-weight="normal" text-anchor="start"><tspan x="130" dy="0">Flujo local verificable. La IA real necesita clave. La base original requiere acceso y actualización SQL.</tspan></text>
+<text x="130" y="976" font-size="24" font-weight="normal" text-anchor="start"><tspan x="130" dy="0">La selección usa inventario académico; no integra proveedores de vuelos, hoteles o pasarelas bancarias.</tspan></text>
+</g></svg>

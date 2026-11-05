@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs><g font-family="Segoe UI,Arial,sans-serif" fill="#111"><rect width="1920" height="1080" fill="white"/>
+<text x="60" y="65" font-size="34" font-weight="bold" text-anchor="start"><tspan x="60" dy="0">USER STORY MAP · Althea | Solicitudes, reservas y abonos</tspan></text>
+<text x="60" y="107" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Actor: asesor comercial · Recorrido y entregas del módulo</tspan></text>
+<rect x="60" y="160" width="340" height="80" rx="10" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="230" y="210" font-size="28" font-weight="bold" text-anchor="middle"><tspan x="230" dy="0">Cliente</tspan></text>
+<rect x="60" y="270" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="84" y="316" font-size="25" font-weight="normal" text-anchor="start"><tspan x="84" dy="0">Crear o seleccionar</tspan><tspan x="84" dy="33.75">cliente</tspan></text>
+<rect x="60" y="420" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="84" y="466" font-size="25" font-weight="normal" text-anchor="start"><tspan x="84" dy="0">Buscar por nombre o</tspan><tspan x="84" dy="33.75">correo</tspan></text>
+<rect x="60" y="570" width="340" height="125" rx="10" fill="#fff5df" stroke="#333" stroke-width="2"/>
+<text x="84" y="616" font-size="25" font-weight="normal" text-anchor="start"><tspan x="84" dy="0">Editar datos de</tspan><tspan x="84" dy="33.75">contacto</tspan></text>
+<rect x="425" y="160" width="340" height="80" rx="10" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="595" y="210" font-size="28" font-weight="bold" text-anchor="middle"><tspan x="595" dy="0">Perfil de viaje</tspan></text>
+<rect x="425" y="270" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="449" y="316" font-size="25" font-weight="normal" text-anchor="start"><tspan x="449" dy="0">Registrar viajeros y</tspan><tspan x="449" dy="33.75">fechas</tspan></text>
+<rect x="425" y="420" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="449" y="466" font-size="25" font-weight="normal" text-anchor="start"><tspan x="449" dy="0">Elegir intereses y</tspan><tspan x="449" dy="33.75">presupuesto</tspan></text>
+<rect x="425" y="570" width="340" height="125" rx="10" fill="#fff5df" stroke="#333" stroke-width="2"/>
+<text x="449" y="616" font-size="25" font-weight="normal" text-anchor="start"><tspan x="449" dy="0">Editar perfil y</tspan><tspan x="449" dy="33.75">regenerar ideas</tspan></text>
+<rect x="790" y="160" width="340" height="80" rx="10" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="960" y="210" font-size="28" font-weight="bold" text-anchor="middle"><tspan x="960" dy="0">Cotización</tspan></text>
+<rect x="790" y="270" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="814" y="316" font-size="25" font-weight="normal" text-anchor="start"><tspan x="814" dy="0">Crear y editar borrador</tspan></text>
+<rect x="790" y="420" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="814" y="466" font-size="25" font-weight="normal" text-anchor="start"><tspan x="814" dy="0">Ver servicios y valor</tspan><tspan x="814" dy="33.75">total</tspan></text>
+<rect x="790" y="570" width="340" height="125" rx="10" fill="#fff5df" stroke="#333" stroke-width="2"/>
+<text x="814" y="616" font-size="25" font-weight="normal" text-anchor="start"><tspan x="814" dy="0">Rechazar o continuar a</tspan><tspan x="814" dy="33.75">reserva</tspan></text>
+<rect x="1155" y="160" width="340" height="80" rx="10" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="1325" y="210" font-size="28" font-weight="bold" text-anchor="middle"><tspan x="1325" dy="0">Reserva</tspan></text>
+<rect x="1155" y="270" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="1179" y="316" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1179" dy="0">Ver disponibilidad y</tspan><tspan x="1179" dy="33.75">detalles</tspan></text>
+<rect x="1155" y="420" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="1179" y="466" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1179" dy="0">Elegir asientos y ver</tspan><tspan x="1179" dy="33.75">políticas</tspan></text>
+<rect x="1155" y="570" width="340" height="125" rx="10" fill="#fff5df" stroke="#333" stroke-width="2"/>
+<text x="1179" y="616" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1179" dy="0">Revisar y confirmar la</tspan><tspan x="1179" dy="33.75">reserva</tspan></text>
+<rect x="1520" y="160" width="340" height="80" rx="10" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="1690" y="210" font-size="28" font-weight="bold" text-anchor="middle"><tspan x="1690" dy="0">Abonos y reportes</tspan></text>
+<rect x="1520" y="270" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="1544" y="316" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1544" dy="0">Registrar y consultar</tspan><tspan x="1544" dy="33.75">abonos</tspan></text>
+<rect x="1520" y="420" width="340" height="125" rx="10" fill="#f5f8f6" stroke="#333" stroke-width="2"/>
+<text x="1544" y="466" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1544" dy="0">Anular registro y</tspan><tspan x="1544" dy="33.75">recalcular saldo</tspan></text>
+<rect x="1520" y="570" width="340" height="125" rx="10" fill="#fff5df" stroke="#333" stroke-width="2"/>
+<text x="1544" y="616" font-size="25" font-weight="normal" text-anchor="start"><tspan x="1544" dy="0">Filtrar y exportar</tspan><tspan x="1544" dy="33.75">reporte CSV</tspan></text>
+<rect x="60" y="780" width="1800" height="110" rx="8" fill="#edf5ef" stroke="#333" stroke-width="2"/>
+<text x="85" y="820" font-size="26" font-weight="bold" text-anchor="start"><tspan x="85" dy="0">Reglas del recorrido</tspan></text>
+<text x="85" y="860" font-size="25" font-weight="normal" text-anchor="start"><tspan x="85" dy="0">Validar datos · Un asiento por viajero · Evitar sobrepagos · Comprobar cupos al guardar</tspan></text>
+<text x="60" y="950" font-size="25" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Sprint 1: cliente, solicitud y cotización. Sprint 2: reserva, políticas, abonos y reportes.</tspan></text>
+<text x="60" y="997" font-size="23" font-weight="normal" text-anchor="start"><tspan x="60" dy="0">Validación externa pendiente: acceso al Supabase original y generación con una clave propia de IA.</tspan></text>
+</g></svg>

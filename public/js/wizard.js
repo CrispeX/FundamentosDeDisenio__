@@ -1,4 +1,4 @@
-const PASOS = ['Cliente', 'Viajeros', 'Destino', 'Preferencias'];
+const PASOS = ['Cliente', 'Viajeros', 'Destino', 'Preferencias', 'Revisión'];
 
 const ICONO_BUSCAR = '<svg viewBox="0 0 24 24"><circle cx="14" cy="10" r="6.5"/><path d="M9.5 14.5 3 21"/></svg>';
 
@@ -33,6 +33,8 @@ function campo(id, etiqueta, valor, { placeholder = '', tipo = 'text', requerido
 }
 
 function vistaPaso() {
+  if(wz.id && wz.paso===1)return `<section class="tarjeta"><h2>Cliente del perfil</h2><p>${esc(wz.cliente.nombre)} · ${esc(wz.cliente.correo)}</p><p>Para editar sus datos de contacto, abre el módulo Clientes.</p></section>`;
+  if(wz.paso===5)return `<section class="tarjeta"><h2>Revisa el perfil de viaje</h2>${resumenPerfil(wz)}<p>Al guardar se registra la solicitud. Después podrás consultar la disponibilidad, cotizar y reservar.</p>${wz.id?'<p>Las cotizaciones en borrador se rechazarán porque el perfil cambió. Podrás cotizar de nuevo.</p>':''}</section>`;
   if (wz.paso === 1) {
     const ro = Boolean(wz.cliente.id);
     return `<section class="tarjeta">
@@ -140,10 +142,10 @@ function validarPaso() {
 
 async function enviarSolicitud() {
   const cliente = wz.cliente.id ? { id: wz.cliente.id } : wz.cliente;
-  await api('POST', '/api/solicitudes', {
+  await api(wz.id?'PATCH':'POST', wz.id?`/api/solicitudes/${wz.id}/perfil`:'/api/solicitudes', {
     cliente, viajeros: wz.viajeros, destino: wz.destino, preferencias: wz.preferencias
   });
-  toast('Solicitud creada');
+  toast(wz.id?'Perfil de viaje actualizado':'Solicitud creada');
   location.hash = '#/solicitudes';
 }
 
@@ -186,7 +188,7 @@ function renderWizard() {
     <header class="encabezado">
       <div class="titulo">
         <button class="volver" id="volver" type="button" aria-label="Volver">←</button>
-        <h1>Nueva solicitud de viaje</h1>
+        <h1>${wz.id?'Editar perfil de viaje':'Nueva solicitud de viaje'}</h1>
       </div>
       <div class="stepper">${renderStepper()}</div>
     </header>
@@ -195,7 +197,7 @@ function renderWizard() {
     <div class="pie">
       ${wz.paso > 1 ? '<button class="btn btn-borde" id="anterior" type="button">Anterior</button>' : ''}
       <button class="btn btn-borde" id="cancelar" type="button">Cancelar</button>
-      <button class="btn" id="siguiente" type="button">${ultimo ? 'Crear solicitud' : 'Siguiente'}</button>
+      <button class="btn" id="siguiente" type="button">${ultimo ? (wz.id?'Guardar perfil':'Crear solicitud') : 'Siguiente'}</button>
     </div>`;
 
   const salir = () => { location.hash = '#/solicitudes'; };
@@ -203,8 +205,9 @@ function renderWizard() {
   $('#cancelar').onclick = salir;
   if ($('#anterior')) $('#anterior').onclick = () => { leerPaso(); wz.error = ''; wz.paso--; renderWizard(); };
 
-  if (wz.paso === 1) enlazarBuscador();
+  if (wz.paso === 1 && !wz.id) enlazarBuscador();
   if (wz.paso === 4) enlazarRecomendaciones();
+  if($('#miga'))$('#miga').innerHTML=`<a href="#/inicio">Inicio</a> / <a href="#/solicitudes">Solicitudes</a> / <span aria-current="step">${wz.id?'Editar perfil':'Nueva solicitud'} · ${PASOS[wz.paso-1]}</span>`;
   if (wz.paso === 2) {
     $('#agregar').onclick = () => { leerPaso(); wz.viajeros.push({ nombre: '', documento: '', tipo: 'Adulto' }); renderWizard(); };
     document.querySelectorAll('[data-quitar]').forEach(b => {
