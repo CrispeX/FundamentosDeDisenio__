@@ -18,7 +18,7 @@ Abrir http://localhost:3000. El modo de práctica usa `data/practica.json`, sepa
 
 Para usar Supabase, copiar `.env.example` a `.env`, configurar `SUPABASE_SECRET_KEY` y ejecutar `npm start`. Se conserva exclusivamente el proyecto **Post**, organización **Practicas_postgres**, referencia `ciwkgqdpogteheeyigxb`. La clave privada permanece en el servidor y no se publica en Git.
 
-Antes de guardar con esta revisión, ejecutar `database/actualizar_reservas_revision.sql` en ese proyecto y comprobar `npm run db:check`. El servidor rechaza escrituras si el esquema aún no conserva oferta, asientos y aceptación de políticas. **El proyecto original no está disponible en las conexiones de esta sesión; la actualización y su prueba real están pendientes.**
+La actualización de oferta, asientos y políticas ya fue aplicada y verificada en el proyecto autorizado. Pasaron ocho comprobaciones SQL con ROLLBACK; los datos existentes se conservaron. Para otra instalación existente, usar `database/actualizar_reservas_revision.sql` antes de guardar y comprobar `npm run db:check`. El servidor rechaza escrituras si el esquema es anterior. La conexión de la aplicación sigue necesitando su clave privada en el archivo `.env`.
 
 No volver a ejecutar el esquema de creación sobre tablas existentes. `database/althea_schema.sql` sirve para una instalación nueva; `database/catalogo_destinos.sql` conserva el catálogo inicial. No se modifica ninguna tabla ajena a Althea.
 
@@ -63,6 +63,6 @@ Las pruebas HTTP usan archivos temporales y datos ficticios; el proveedor de IA 
 - [Correcciones y guion de demostración](docs/revision-evaluacion.md).
 - [Diagramas SVG y PNG para Canva](docs/diagramas).
 - `node scripts/generar-diagramas.js` reproduce los SVG. Los PNG se renderizaron con Sharp como herramienta de edición, sin añadir dependencias a la app.
-- `database/verify_supabase.sql` conserva las pruebas SQL con ROLLBACK; deben ejecutarse en el proyecto autorizado una vez recuperado el acceso.
+- `database/verify_supabase.sql` conserva las pruebas SQL con ROLLBACK; deben ejecutarse en el proyecto autorizado tras instalar el esquema o su actualización.
 
 No se afirma «20/20 HU»: la evaluación adjunta no incluye el texto de todas las historias numeradas. La trazabilidad identifica requisitos implementados y verificaciones externas pendientes.

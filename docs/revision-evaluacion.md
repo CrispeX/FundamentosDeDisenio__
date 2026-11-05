@@ -10,7 +10,7 @@ Se trabajó con las observaciones de las tres imágenes. No se recibió el texto
 | Vista previa antes de guardar reserva | Resumen generado por el servidor: cliente, viajeros, ruta, fechas, servicio, asientos, precio cotizado y políticas. La confirmación exige una vista firmada vigente que coincida con los datos actuales. |
 | HU 1.9: ver políticas | Políticas visibles antes de reservar; aceptación obligatoria y registro de la versión y fecha en la reserva. Son reglas del prototipo académico. |
 | Gestión de pagos | Flujo completo cotización → reserva → abono → recibo → anular. Valida montos, referencias únicas, saldo, cancelación y sobrepagos. Registra abonos; no procesa cobros bancarios. |
-| No conectado con BD | Se conserva el adaptador del proyecto Post / Practicas_postgres y se agrega actualización SQL para oferta, asientos y aceptación de políticas. El servidor detecta un esquema antiguo antes de guardar. El proyecto original no está disponible en las conexiones de esta sesión: actualización y prueba real pendientes. |
+| No conectado con BD | Se conserva el adaptador del proyecto Post / Practicas_postgres y se agrega actualización SQL para oferta, asientos y aceptación de políticas. El servidor detecta un esquema antiguo antes de guardar. La actualización ya se aplicó en el proyecto autorizado. Pasaron ocho comprobaciones SQL con ROLLBACK, incluidos asientos y políticas; los datos existentes se conservaron. La app necesita su clave privada en el servidor. |
 | Identidad, header y navegación | Nombre distintivo del módulo, banner, perfil del asesor, menú activo, migas de pan y botones Atrás/Adelante dentro de la aplicación. |
 | Respuestas de la interfaz | Mensajes de éxito, errores de validación, estados vacíos, carga y estado de la conexión. |
 | Actividades | Procesos nombrados, decisiones sin texto dentro, condiciones en salidas, convergencias explícitas y un nodo final por proceso. |
@@ -39,4 +39,4 @@ Plan B: si no hay acceso a Supabase, usar el modo de práctica explícito. Si no
 
 `npm test` ejecuta pruebas HTTP del flujo, pagos, integridad de perfiles, cupos, políticas, asientos y vistas previas, además del adaptador remoto simulado. Las pruebas usan archivos temporales y datos ficticios. La comprobación visual se hace con una demostración aislada; no escribe en la base de Supabase.
 
-Los diagramas están en `docs/diagramas`, con sus fuentes SVG y PNG para Canva. `scripts/generar-diagramas.js` reproduce los SVG sin dependencias. La actualización SQL debe probarse y aplicarse exclusivamente en el proyecto autorizado antes de usar estas funciones en Supabase.
+Los diagramas están en `docs/diagramas`, con sus fuentes SVG y PNG para Canva. `scripts/generar-diagramas.js` reproduce los SVG sin dependencias. La actualización SQL fue aplicada y verificada exclusivamente en el proyecto autorizado. No se modificaron tablas ajenas a Althea.

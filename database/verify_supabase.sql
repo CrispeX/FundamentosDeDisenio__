@@ -4,6 +4,7 @@ do $test$
 declare snap jsonb; d jsonb; mala jsonb; rev bigint; cid bigint; sid bigint; qid bigint; rid bigint; pid bigint; pruebas integer:=0;
 begin
   snap:=public.althea_read_state();d:=snap->'data';rev:=(snap->>'revision')::bigint;
+  if (d->>'reservasRevision')::integer is distinct from 2 then raise exception 'Versión del esquema incorrecta';end if;pruebas:=pruebas+1;
   cid:=(d->'seq'->>'clientes')::bigint+1;sid:=(d->'seq'->>'solicitudes')::bigint+1;
   qid:=(d->'seq'->>'cotizaciones')::bigint+1;rid:=(d->'seq'->>'reservas')::bigint+1;pid:=(d->'seq'->>'pagos')::bigint+1;
   d:=jsonb_set(d,'{seq,clientes}',to_jsonb(cid));
@@ -27,8 +28,9 @@ begin
   d:=jsonb_set(d,'{solicitudes}',(select jsonb_agg(case when (j->>'id')::bigint=sid then j||'{"estado":"Reservada"}'::jsonb else j end order by (j->>'id')::bigint) from jsonb_array_elements(d->'solicitudes') j));
   d:=jsonb_set(d,'{cotizaciones}',(select jsonb_agg(case when (j->>'id')::bigint=qid then j||jsonb_build_object('estado','Aceptada','reservaId',rid) else j end order by (j->>'id')::bigint) from jsonb_array_elements(d->'cotizaciones') j));
   d:=jsonb_set(d,'{reservas}',(d->'reservas')||jsonb_build_array(jsonb_build_object(
-    'id',rid,'codigo','RES-SQL-TEST','solicitudId',sid,'clienteId',cid,'cotizacionId',qid,'total',1000,'fechaSalida','2027-03-01','fechaRegreso','2027-03-05','estado','Confirmada','creadaEn',now())));
+    'id',rid,'codigo','RES-SQL-TEST','solicitudId',sid,'clienteId',cid,'cotizacionId',qid,'total',1000,'fechaSalida','2027-03-01','fechaRegreso','2027-03-05','estado','Confirmada','oferta',jsonb_build_object('clave','salida-prueba','nombre','Oferta académica','cupos',1),'asientos',jsonb_build_array('1A'),'politicas',jsonb_build_object('version','academica-2026-11-v1','aceptadasEn',now()),'creadaEn',now())));
   rev:=public.althea_write_state(rev,d);pruebas:=pruebas+1;
+  if not exists(select 1 from jsonb_array_elements(public.althea_read_state()->'data'->'reservas') r where (r->>'id')::bigint=rid and r->'asientos'='["1A"]'::jsonb and r->'oferta'->>'clave'='salida-prueba' and r->'politicas'->>'version'='academica-2026-11-v1') then raise exception 'No se conservaron los campos de la reserva';end if;pruebas:=pruebas+1;
   d:=jsonb_set(d,'{seq,pagos}',to_jsonb(pid));
   d:=jsonb_set(d,'{pagos}',(d->'pagos')||jsonb_build_array(jsonb_build_object(
     'id',pid,'codigo','PAG-SQL-TEST','reservaId',rid,'monto',500,'metodo','Efectivo','referencia','SQL-TEST','estado','Registrado','creadaEn',now())));
@@ -48,9 +50,9 @@ begin
   d:=jsonb_set(d,'{cotizaciones}',(select jsonb_agg(case when (j->>'id')::bigint=qid then j||'{"estado":"Cancelada"}'::jsonb else j end order by (j->>'id')::bigint) from jsonb_array_elements(d->'cotizaciones') j));
   d:=jsonb_set(d,'{solicitudes}',(select jsonb_agg(case when (j->>'id')::bigint=sid then j||'{"estado":"Pendiente"}'::jsonb else j end order by (j->>'id')::bigint) from jsonb_array_elements(d->'solicitudes') j));
   rev:=public.althea_write_state(rev,d);pruebas:=pruebas+1;
-  if pruebas<>6 then raise exception 'Pruebas incompletas';end if;
+  if pruebas<>8 then raise exception 'Pruebas incompletas';end if;
 end;
 $test$;
 set constraints all immediate;
-select '6 comprobaciones SQL aprobadas; se revierten los datos de prueba' as resultado;
+select '8 comprobaciones SQL aprobadas; se revierten los datos de prueba' as resultado;
 rollback;
