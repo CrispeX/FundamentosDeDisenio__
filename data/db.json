@@ -17,6 +17,12 @@
       "nombre": "dadasd",
       "correo": "dasdasd@ksj.com",
       "telefono": "dasdasd"
+    },
+    {
+      "id": 4,
+      "nombre": "Sanet Correa",
+      "correo": "soysanet@hola.com",
+      "telefono": "+57 1234567678"
     }
   ],
   "solicitudes": [
@@ -41,8 +47,32 @@
         "presupuesto": null,
         "notas": ""
       },
-      "estado": "Reservada",
+      "estado": "Pendiente",
       "creadaEn": "2026-10-05T20:32:05.780Z"
+    },
+    {
+      "id": 2,
+      "clienteId": 4,
+      "viajeros": [
+        {
+          "nombre": "Camilo",
+          "documento": "12345678",
+          "tipo": "Adulto"
+        }
+      ],
+      "destino": {
+        "origen": "medellin",
+        "destino": "peru",
+        "fechaSalida": "0015-12-23",
+        "fechaRegreso": "2026-10-22"
+      },
+      "preferencias": {
+        "tipoServicio": "Vuelo",
+        "presupuesto": 10000020,
+        "notas": ""
+      },
+      "estado": "Pendiente",
+      "creadaEn": "2026-10-06T15:54:40.306Z"
     }
   ],
   "reservas": [
@@ -51,15 +81,15 @@
       "codigo": "RES-0001",
       "solicitudId": 1,
       "clienteId": 3,
-      "fechaSalida": "2026-10-03",
-      "fechaRegreso": "2026-10-22",
-      "estado": "Confirmada",
+      "fechaSalida": "2026-10-14",
+      "fechaRegreso": "2026-10-29",
+      "estado": "Cancelada",
       "creadaEn": "2026-10-05T20:32:09.061Z"
     }
   ],
   "seq": {
-    "clientes": 3,
-    "solicitudes": 1,
+    "clientes": 4,
+    "solicitudes": 2,
     "reservas": 1
   }
 }
