@@ -25,8 +25,18 @@ function contextoNavegacion(ruta) {
 $('#nav-atras').onclick=()=>{if(posicionRuta>0){moviendoHistorial=true;location.hash=rutasVisitadas[--posicionRuta];}};
 $('#nav-adelante').onclick=()=>{if(posicionRuta<rutasVisitadas.length-1){moviendoHistorial=true;location.hash=rutasVisitadas[++posicionRuta];}};
 async function revisarConexion() {
-  try {const estado=await api('GET','/api/estado');$('#conexion').textContent=estado.almacenamiento==='supabase'?'Datos: Supabase conectado':'Modo de práctica · datos locales';$('#conexion').classList.remove('sin-conexion');}
-  catch {$('#conexion').textContent='Conexión de datos pendiente. Revisa la configuración y vuelve a intentar.';$('#conexion').classList.add('sin-conexion');}
+  const aviso = $('#conexion');
+  try {
+    const estado = await api('GET', '/api/estado');
+    const conectado = estado.almacenamiento === 'supabase';
+    aviso.hidden = !conectado;
+    aviso.textContent = conectado ? 'Datos: Supabase conectado' : '';
+    aviso.classList.remove('sin-conexion');
+  } catch {
+    aviso.hidden = false;
+    aviso.textContent = 'Conexión de datos pendiente. Revisa la configuración y vuelve a intentar.';
+    aviso.classList.add('sin-conexion');
+  }
 }
 
 function pintarMenu(activo) {

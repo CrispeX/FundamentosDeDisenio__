@@ -14,7 +14,7 @@ Para practicar sin conexión externa:
 npm run demo
 ```
 
-Abrir http://localhost:3000. El modo de práctica usa `data/practica.json`, separado de los datos originales y excluido de Git. La interfaz identifica que son datos locales.
+Abrir http://localhost:3000. El modo de práctica usa `data/practica.json`, separado de los datos originales y excluido de Git.
 
 Para usar Supabase, copiar `.env.example` a `.env`, configurar `SUPABASE_SECRET_KEY` y ejecutar `npm start`. Se conserva exclusivamente el proyecto **Post**, organización **Practicas_postgres**, referencia `ciwkgqdpogteheeyigxb`. La clave privada permanece en el servidor y no se publica en Git.
 
