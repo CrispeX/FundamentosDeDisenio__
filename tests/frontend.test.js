@@ -16,3 +16,14 @@ test('Exportación CSV: contenido, comillas y protección contra fórmulas', asy
   assert.equal(contenido.split('\r\n').length,3);
   assert.equal(revocado,'blob:test');
 });
+
+test('Editar perfil en Solicitudes vuelve a cargar la ruta aunque el hash no cambie', async () => {
+  let rutas=0,peticion;
+  const ctx=vm.createContext({document:{querySelector(){return null;}},location:{hash:'#/solicitudes'},
+    api:async(method,url,body)=>{peticion={method,url,body};},toast(){},enrutar:async()=>{rutas++;}});
+  vm.runInContext(fs.readFileSync(path.join(__dirname,'../public/js/wizard.js'),'utf8'),ctx);
+  vm.runInContext('reiniciarWizard();wz.id=7;wz.cliente.id=1;',ctx);
+  await vm.runInContext('enviarSolicitud()',ctx);
+  assert.equal(peticion.method,'PATCH');assert.equal(peticion.url,'/api/solicitudes/7/perfil');
+  assert.equal(rutas,1);
+});

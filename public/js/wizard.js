@@ -146,7 +146,8 @@ async function enviarSolicitud() {
     cliente, viajeros: wz.viajeros, destino: wz.destino, preferencias: wz.preferencias
   });
   toast(wz.id?'Perfil de viaje actualizado':'Solicitud creada');
-  location.hash = '#/solicitudes';
+  if(location.hash === '#/solicitudes') await enrutar();
+  else location.hash = '#/solicitudes';
 }
 
 function enlazarBuscador() {
