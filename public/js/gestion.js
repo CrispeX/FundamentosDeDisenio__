@@ -172,8 +172,10 @@ function descargarCsv(nombre, filas) {
     return '"' + valor.replace(/"/g, '""') + '"';
   }).join(';')).join('\r\n');
   const url = URL.createObjectURL(new Blob([texto], {type: 'text/csv;charset=utf-8;'}));
-  const a = document.createElement('a'); a.href = url; a.download = nombre; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const a = document.createElement('a'); a.href = url; a.download = nombre; a.hidden = true;
+  document.body.appendChild(a);
+  try { a.click(); }
+  finally { a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
 }
 async function gestionarReportes() {
   const [reservas, pagos] = await Promise.all([api('GET', '/api/reservas'), api('GET', '/api/pagos')]);
@@ -183,16 +185,25 @@ async function gestionarReportes() {
   let visibles = reservas;
   const render = () => {
     const desde = $('#desde').value, hasta = $('#hasta').value;
-    if (desde && hasta && hasta < desde) { $('#error-reporte').textContent = 'La fecha final debe ser igual o posterior a la inicial.'; return; }
+    if (desde && hasta && hasta < desde) {
+      $('#error-reporte').textContent = 'La fecha final debe ser igual o posterior a la inicial.';
+      $('#resultado-reporte').innerHTML = '';
+      visibles = [];
+      return false;
+    }
     $('#error-reporte').textContent = '';
     visibles = reservas.filter(r => (!desde || r.fechaSalida >= desde) && (!hasta || r.fechaSalida <= hasta));
     const activas = visibles.filter(r => r.estado !== 'Cancelada');
     const ids = new Set(visibles.map(r=>r.id));
     const cobrados = pagos.filter(p=>ids.has(p.reservaId) && p.estado === 'Registrado').reduce((n,p)=>n+p.monto,0);
     $('#resultado-reporte').innerHTML = `<div class="resumen"><div class="dato"><strong>${activas.length}</strong><span>Reservas activas</span></div><div class="dato"><strong>${fmtMoneda(cobrados)}</strong><span>Pagos registrados</span></div><div class="dato"><strong>${fmtMoneda(activas.reduce((n,r)=>n+r.saldoPendiente,0))}</strong><span>Saldo pendiente</span></div></div><div class="tabla-wrap">${tabla(['Reserva', 'Cliente', 'Destino', 'Salida', 'Estado', 'Total', 'Pagado', 'Saldo'], visibles.map(r=>`<tr><td>${r.codigo}</td><td>${esc(r.cliente?.nombre)}</td><td>${esc(r.destino)}</td><td>${fmtFecha(r.fechaSalida)}</td><td>${r.estado}</td><td>${r.total ? fmtMoneda(r.total) : 'Sin cotización'}</td><td>${fmtMoneda(r.totalPagado)}</td><td>${r.total ? fmtMoneda(r.saldoPendiente) : '—'}</td></tr>`), 'No hay reservas en este periodo.')}</div>`;
+    return true;
   };
   $('#filtros-reporte').onsubmit = e => { e.preventDefault(); render(); };
   $('#limpiar-reporte').onclick = () => { $('#filtros-reporte').reset(); render(); };
-  $('#exportar').onclick = () => descargarCsv('reporte-reservas.csv', [['Reserva','Cliente','Destino','Salida','Regreso','Estado','Total COP','Pagado COP','Saldo COP'], ...visibles.map(r=>[r.codigo,r.cliente?.nombre,r.destino,r.fechaSalida,r.fechaRegreso,r.estado,r.total ?? '',r.totalPagado,r.total ? r.saldoPendiente : ''])]);
+  $('#exportar').onclick = () => {
+    if (!render()) return;
+    descargarCsv('reporte-reservas.csv', [['Reserva','Cliente','Destino','Salida','Regreso','Estado','Total COP','Pagado COP','Saldo COP'], ...visibles.map(r=>[r.codigo,r.cliente?.nombre,r.destino,r.fechaSalida,r.fechaRegreso,r.estado,r.total ?? '',r.totalPagado,r.total ? r.saldoPendiente : ''])]);
+  };
   render();
 }

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><g font-family="Segoe UI,DejaVu Sans,Arial,sans-serif">
+<rect x="25" y="25" width="1870" height="1030" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<rect x="25" y="25" width="744" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">sd Althea :: Confirmar reserva directa</text>
+<rect x="40" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="200.0" y="176" text-anchor="middle" font-size="24" font-weight="bold">Asesor</text>
+<polyline points="200,221 200,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="395" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="555.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">pantalla:InterfazAsesor</text>
+<polyline points="555,221 555,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="790" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="950.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">servicio:ServicioReservas</text>
+<polyline points="950,221 950,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="1185" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1345.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">db:AlmacenDatos</text>
+<polyline points="1345,221 1345,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="200,265 555,265" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="555,265 543.4690660038693,271.00312928203925 543.4690660038693,258.99687071796075" fill="#333333" stroke="#333"/>
+<text x="377.5" y="253" text-anchor="middle" font-size="21" font-weight="normal">1: revisar selección</text>
+<rect x="546" y="265" width="18" height="205" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="555,315 950,315" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="950,315 938.4690660038693,321.00312928203925 938.4690660038693,308.99687071796075" fill="#333333" stroke="#333"/>
+<text x="752.5" y="303" text-anchor="middle" font-size="21" font-weight="normal">1.1: vistaPrevia(datos)</text>
+<rect x="941" y="315" width="18" height="125" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="950,355 1345,355" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="1345,355 1333.4690660038693,361.00312928203925 1333.4690660038693,348.99687071796075" fill="#333333" stroke="#333"/>
+<text x="1147.5" y="343" text-anchor="middle" font-size="21" font-weight="normal">1.1.1: load()</text>
+<polyline points="1345,400 950,400" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="961.5309339961307,393.99687071796075 950,400 961.5309339961307,406.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1147.5" y="388" text-anchor="middle" font-size="21" font-weight="normal">perfil e inventario</text>
+<polyline points="950,450 555,450" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="566.5309339961307,443.99687071796075 555,450 566.5309339961307,456.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<text x="752.5" y="438" text-anchor="middle" font-size="21" font-weight="normal">resumen y token</text>
+<polyline points="555,490 200,490" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="211.5309339961307,483.99687071796075 200,490 211.5309339961307,496.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<text x="377.5" y="478" text-anchor="middle" font-size="21" font-weight="normal">vista previa</text>
+<polyline points="200,545 555,545" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="555,545 543.4690660038693,551.0031292820393 543.4690660038693,538.9968707179607" fill="#333333" stroke="#333"/>
+<text x="377.5" y="533" text-anchor="middle" font-size="21" font-weight="normal">2: confirmar</text>
+<rect x="546" y="545" width="18" height="435" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="555,590 950,590" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="950,590 938.4690660038693,596.0031292820393 938.4690660038693,583.9968707179607" fill="#333333" stroke="#333"/>
+<text x="752.5" y="578" text-anchor="middle" font-size="21" font-weight="normal">2.1: crear(datos)</text>
+<rect x="941" y="590" width="18" height="345" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="950,635 1345,635" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="1345,635 1333.4690660038693,641.0031292820393 1333.4690660038693,628.9968707179607" fill="#333333" stroke="#333"/>
+<text x="1147.5" y="623" text-anchor="middle" font-size="21" font-weight="normal">2.1.1: load()</text>
+<polyline points="1345,680 950,680" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="961.5309339961307,673.9968707179607 950,680 961.5309339961307,686.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1147.5" y="668" text-anchor="middle" font-size="21" font-weight="normal">estado vigente</text>
+<text x="690" y="728" text-anchor="start" font-size="19" font-weight="normal">[token vigente, políticas aceptadas y cupos libres]</text>
+<rect x="1550" y="760" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1710.0" y="791" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">reserva:Reserva</text>
+<polyline points="1710,836 1710,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="950,798 1550,798" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1538.4690660038693,804.0031292820393 1550,798 1538.4690660038693,791.9968707179607" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1250.0" y="786" text-anchor="middle" font-size="21" font-weight="normal">2.1.2: «create» Reserva</text>
+<polyline points="950,855 1345,855" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="1345,855 1333.4690660038693,861.0031292820393 1333.4690660038693,848.9968707179607" fill="#333333" stroke="#333"/>
+<text x="1147.5" y="843" text-anchor="middle" font-size="21" font-weight="normal">2.1.3: save()</text>
+<polyline points="1345,900 950,900" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="961.5309339961307,893.9968707179607 950,900 961.5309339961307,906.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1147.5" y="888" text-anchor="middle" font-size="21" font-weight="normal">persistencia completada</text>
+<polyline points="950,945 555,945" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="566.5309339961307,938.9968707179607 555,945 566.5309339961307,951.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="752.5" y="933" text-anchor="middle" font-size="21" font-weight="normal">reserva confirmada</text>
+<polyline points="555,995 200,995" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="211.5309339961307,988.9968707179607 200,995 211.5309339961307,1001.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="377.5" y="983" text-anchor="middle" font-size="21" font-weight="normal">mostrar confirmación</text>
+</g></svg>

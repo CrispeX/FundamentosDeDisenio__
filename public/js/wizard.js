@@ -130,7 +130,11 @@ function validarPaso() {
     if (!c.nombre || !c.correo || !c.telefono) return 'Completa nombre, correo y teléfono del cliente.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.correo)) return 'El correo electrónico no es válido.';
   }
-  if (wz.paso === 2 && wz.viajeros.some(p => !p.nombre || !p.documento)) return 'Completa nombre y documento de cada viajero.';
+  if (wz.paso === 2) {
+    if (!wz.viajeros.length || wz.viajeros.length > 30) return 'La solicitud debe tener entre 1 y 30 viajeros.';
+    if (wz.viajeros.some(p => !p.nombre || !p.documento)) return 'Completa nombre y documento de cada viajero.';
+    if (new Set(wz.viajeros.map(p => p.documento.trim().toUpperCase())).size !== wz.viajeros.length) return 'Cada viajero debe tener un documento diferente.';
+  }
   if (wz.paso === 3) {
     if (!d.origen || !d.fechaSalida || !d.fechaRegreso) return 'Completa el origen y las fechas del viaje.';
     if (d.fechaRegreso < d.fechaSalida) return 'La fecha de regreso no puede ser anterior a la de salida.';
@@ -201,7 +205,10 @@ function renderWizard() {
       <button class="btn" id="siguiente" type="button">${ultimo ? (wz.id?'Guardar perfil':'Crear solicitud') : 'Siguiente'}</button>
     </div>`;
 
-  const salir = () => { location.hash = '#/solicitudes'; };
+  const salir = async () => {
+    if (location.hash === '#/solicitudes') await enrutar();
+    else location.hash = '#/solicitudes';
+  };
   $('#volver').onclick = salir;
   $('#cancelar').onclick = salir;
   if ($('#anterior')) $('#anterior').onclick = () => { leerPaso(); wz.error = ''; wz.paso--; renderWizard(); };
@@ -210,9 +217,16 @@ function renderWizard() {
   if (wz.paso === 4) enlazarRecomendaciones();
   if($('#miga'))$('#miga').innerHTML=`<a href="#/inicio">Inicio</a> / <a href="#/solicitudes">Solicitudes</a> / <span aria-current="step">${wz.id?'Editar perfil':'Nueva solicitud'} · ${PASOS[wz.paso-1]}</span>`;
   if (wz.paso === 2) {
-    $('#agregar').onclick = () => { leerPaso(); wz.viajeros.push({ nombre: '', documento: '', tipo: 'Adulto' }); renderWizard(); };
+    $('#agregar').disabled = wz.viajeros.length >= 30;
+    $('#agregar').onclick = () => {
+      if (wz.viajeros.length >= 30) return;
+      leerPaso(); wz.viajeros.push({ nombre: '', documento: '', tipo: 'Adulto' }); renderWizard();
+    };
     document.querySelectorAll('[data-quitar]').forEach(b => {
-      b.onclick = () => { leerPaso(); wz.viajeros.splice(Number(b.dataset.quitar), 1); renderWizard(); };
+      b.onclick = () => {
+        if (wz.viajeros.length <= 1) return;
+        leerPaso(); wz.viajeros.splice(Number(b.dataset.quitar), 1); renderWizard();
+      };
     });
   }
 

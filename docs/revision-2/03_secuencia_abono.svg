@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><g font-family="Segoe UI,DejaVu Sans,Arial,sans-serif">
+<rect x="25" y="25" width="1870" height="1030" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<rect x="25" y="25" width="726" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">sd Althea :: Registrar abono recibido</text>
+<rect x="40" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="200.0" y="176" text-anchor="middle" font-size="24" font-weight="bold">Asesor</text>
+<polyline points="200,221 200,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="395" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="555.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">pantalla:InterfazAsesor</text>
+<polyline points="555,221 555,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="790" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="950.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">gestion:GestionComercial</text>
+<polyline points="950,221 950,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="1185" y="145" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1345.0" y="176" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">db:AlmacenDatos</text>
+<polyline points="1345,221 1345,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="200,275 555,275" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="555,275 543.4690660038693,281.00312928203925 543.4690660038693,268.99687071796075" fill="#333333" stroke="#333"/>
+<text x="377.5" y="263" text-anchor="middle" font-size="21" font-weight="normal">1: registrar abono</text>
+<rect x="546" y="275" width="18" height="655" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="555,340 950,340" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="950,340 938.4690660038693,346.00312928203925 938.4690660038693,333.99687071796075" fill="#333333" stroke="#333"/>
+<text x="752.5" y="328" text-anchor="middle" font-size="21" font-weight="normal">1.1: registrarPago(datos)</text>
+<rect x="941" y="340" width="18" height="535" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<polyline points="950,415 1345,415" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="1345,415 1333.4690660038693,421.00312928203925 1333.4690660038693,408.99687071796075" fill="#333333" stroke="#333"/>
+<text x="1147.5" y="403" text-anchor="middle" font-size="21" font-weight="normal">1.1.1: load()</text>
+<polyline points="1345,480 950,480" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="961.5309339961307,473.99687071796075 950,480 961.5309339961307,486.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1147.5" y="468" text-anchor="middle" font-size="21" font-weight="normal">reserva, pagos y saldo</text>
+<text x="690" y="545" text-anchor="start" font-size="19" font-weight="normal">[reserva activa, 0 &lt; monto ≤ saldo y referencia única]</text>
+<rect x="1550" y="600" width="320" height="76" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1710.0" y="631" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">pago:Pago</text>
+<polyline points="1710,676 1710,1000" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="950,638 1550,638" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1538.4690660038693,644.0031292820393 1550,638 1538.4690660038693,631.9968707179607" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1250.0" y="626" text-anchor="middle" font-size="21" font-weight="normal">1.1.2: «create» Pago</text>
+<polyline points="950,715 1345,715" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="1345,715 1333.4690660038693,721.0031292820393 1333.4690660038693,708.9968707179607" fill="#333333" stroke="#333"/>
+<text x="1147.5" y="703" text-anchor="middle" font-size="21" font-weight="normal">1.1.3: save()</text>
+<polyline points="1345,780 950,780" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="961.5309339961307,773.9968707179607 950,780 961.5309339961307,786.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1147.5" y="768" text-anchor="middle" font-size="21" font-weight="normal">persistencia completada</text>
+<polyline points="950,865 555,865" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="566.5309339961307,858.9968707179607 555,865 566.5309339961307,871.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="752.5" y="853" text-anchor="middle" font-size="21" font-weight="normal">recibo y saldo recalculado</text>
+<polyline points="555,945 200,945" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="211.5309339961307,938.9968707179607 200,945 211.5309339961307,951.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="377.5" y="933" text-anchor="middle" font-size="21" font-weight="normal">mostrar recibo</text>
+</g></svg>

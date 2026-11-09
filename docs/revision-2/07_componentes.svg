@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><g font-family="Segoe UI,DejaVu Sans,Arial,sans-serif">
+<rect x="25" y="25" width="1870" height="1030" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<rect x="25" y="25" width="1140" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">component Althea :: Contratos y relaciones de implementación</text>
+<rect x="65" y="220" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="280.0" y="251" text-anchor="middle" font-size="20" font-weight="normal">«component»</text>
+<text x="280.0" y="280" text-anchor="middle" font-size="24" font-weight="bold">Interfaz del asesor</text>
+<polyline points="65,297 495,297" fill="none" stroke="#333" stroke-width="2"/>
+<text x="80" y="328" text-anchor="start" font-size="21" font-weight="normal">public/js/*.js</text>
+<rect x="755" y="220" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="970.0" y="251" text-anchor="middle" font-size="20" font-weight="normal">«component»</text>
+<text x="970.0" y="280" text-anchor="middle" font-size="24" font-weight="bold">API y servicios</text>
+<polyline points="755,297 1185,297" fill="none" stroke="#333" stroke-width="2"/>
+<text x="770" y="328" text-anchor="start" font-size="21" font-weight="normal">src/routes + services</text>
+<rect x="1425" y="220" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1640.0" y="251" text-anchor="middle" font-size="20" font-weight="normal">«component»</text>
+<text x="1640.0" y="280" text-anchor="middle" font-size="24" font-weight="bold">Persistencia</text>
+<polyline points="1425,297 1855,297" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1440" y="328" text-anchor="start" font-size="21" font-weight="normal">models/db.js + supabase.js</text>
+<rect x="540" y="220" width="175" height="125" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="627.5" y="251" text-anchor="middle" font-size="20" font-weight="normal">«interface»</text>
+<text x="627.5" y="280" text-anchor="middle" font-size="24" font-weight="bold">HTTP JSON</text>
+<polyline points="495,285 540,285" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="528.4690660038693,291.00312928203925 540,285 528.4690660038693,278.99687071796075" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="755,285 715,285" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polygon points="715,285 726.5309339961307,278.99687071796075 726.5309339961307,291.00312928203925" fill="#ffffff" stroke="#333"/>
+<rect x="1230" y="220" width="150" height="125" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1305.0" y="251" text-anchor="middle" font-size="20" font-weight="normal">«interface»</text>
+<text x="1305.0" y="280" text-anchor="middle" font-size="24" font-weight="bold">Snapshot</text>
+<polyline points="1185,285 1230,285" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1218.4690660038693,291.00312928203925 1230,285 1218.4690660038693,278.99687071796075" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1425,285 1380,285" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polygon points="1380,285 1391.5309339961307,278.99687071796075 1391.5309339961307,291.00312928203925" fill="#ffffff" stroke="#333"/>
+<rect x="755" y="650" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="970.0" y="681" text-anchor="middle" font-size="20" font-weight="normal">«component»</text>
+<text x="970.0" y="710" text-anchor="middle" font-size="24" font-weight="bold">Recomendador</text>
+<polyline points="755,727 1185,727" fill="none" stroke="#333" stroke-width="2"/>
+<text x="770" y="758" text-anchor="start" font-size="21" font-weight="normal">recomendaciones.service.js</text>
+<rect x="790" y="450" width="360" height="115" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="970.0" y="481" text-anchor="middle" font-size="20" font-weight="normal">«interface»</text>
+<text x="970.0" y="510" text-anchor="middle" font-size="24" font-weight="bold">Recomendar perfil</text>
+<polyline points="970,365 970,450" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="963.9968707179607,438.46906600386933 970,450 976.0031292820393,438.46906600386933" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="970,650 970,565" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polygon points="970,565 976.0031292820393,576.5309339961307 963.9968707179607,576.5309339961307" fill="#ffffff" stroke="#333"/>
+<rect x="1425" y="650" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1640.0" y="681" text-anchor="middle" font-size="20" font-weight="normal">«component»</text>
+<text x="1640.0" y="710" text-anchor="middle" font-size="24" font-weight="bold">OpenAI Responses</text>
+<polyline points="1425,727 1855,727" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1440" y="758" text-anchor="start" font-size="21" font-weight="normal">integración opcional HTTPS</text>
+<polyline points="1185,720 1425,720" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1413.4690660038693,726.0031292820393 1425,720 1413.4690660038693,713.9968707179607" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1305" y="682" text-anchor="middle" font-size="21" font-weight="normal">«use» [con clave]</text>
+<rect x="65" y="650" width="430" height="145" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="280.0" y="681" text-anchor="middle" font-size="20" font-weight="normal">«artifact»</text>
+<text x="280.0" y="710" text-anchor="middle" font-size="24" font-weight="bold">Catálogo de destinos</text>
+<polyline points="65,727 495,727" fill="none" stroke="#333" stroke-width="2"/>
+<text x="80" y="758" text-anchor="start" font-size="21" font-weight="normal">src/data/destinos.json</text>
+<polyline points="755,720 495,720" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="506.53093399613067,713.9968707179607 495,720 506.53093399613067,726.0031292820393" fill="none" stroke="#333" stroke-width="2"/>
+<text x="620" y="682" text-anchor="middle" font-size="21" font-weight="normal">«use» respaldo</text>
+<rect x="65" y="890" width="430" height="110" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="280.0" y="921" text-anchor="middle" font-size="20" font-weight="normal">«artifact»</text>
+<text x="280.0" y="950" text-anchor="middle" font-size="24" font-weight="bold">public/</text>
+<polyline points="65,945 40,945 40,290 65,290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="53.46906600386931,296.00312928203925 65,290 53.46906600386931,283.99687071796075" fill="none" stroke="#333" stroke-width="2"/>
+<text x="95" y="545" text-anchor="start" font-size="21" font-weight="normal">«manifest»</text>
+<rect x="1425" y="890" width="430" height="110" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1640.0" y="921" text-anchor="middle" font-size="20" font-weight="normal">«artifact»</text>
+<text x="1640.0" y="950" text-anchor="middle" font-size="24" font-weight="bold">src/models/</text>
+<polyline points="1855,945 1880,945 1880,290 1855,290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1866.5309339961307,283.99687071796075 1855,290 1866.5309339961307,296.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1660" y="545" text-anchor="start" font-size="21" font-weight="normal">«manifest»</text>
+<text x="755" y="935" text-anchor="start" font-size="23" font-weight="normal">Flecha abierta: dependencia de uso.</text>
+<text x="755" y="980" text-anchor="start" font-size="23" font-weight="normal">Triángulo vacío: realización del contrato.</text>
+</g></svg>

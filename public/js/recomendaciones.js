@@ -46,7 +46,7 @@ function programarRecomendaciones(inmediato=false) {
     pintarRecomendaciones(); return;
   }
   const datos=datosParaRecomendar(), clave=JSON.stringify(datos), estado=wz;
-  if(estado.recomendaciones.clave===clave && estado.recomendaciones.datos && !estado.recomendaciones.cargando) { pintarRecomendaciones(); return; }
+  if(!inmediato && estado.recomendaciones.clave===clave && estado.recomendaciones.datos && !estado.recomendaciones.cargando) { pintarRecomendaciones(); return; }
   estado.recomendaciones={cargando:true,datos:null,error:'',clave};
   pintarRecomendaciones();
   recomendacionTemporizador=setTimeout(()=>consultarRecomendaciones(estado,datos,clave),inmediato ? 0 : 850);

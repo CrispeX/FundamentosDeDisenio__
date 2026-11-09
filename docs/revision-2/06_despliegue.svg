@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><g font-family="Segoe UI,DejaVu Sans,Arial,sans-serif">
+<rect x="25" y="25" width="1870" height="1030" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<rect x="25" y="25" width="1122" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">deployment Althea :: Nodos, artefactos y servicios externos</text>
+<polyline points="65,190 81,174 521,174 521,834 505,850" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="505,190 521,174" fill="none" stroke="#333" stroke-width="2"/>
+<rect x="65" y="190" width="440" height="660" fill="#f8f8f8" stroke="#333" stroke-width="2"/>
+<text x="285.0" y="227" text-anchor="middle" font-size="21" font-weight="normal">«device»</text>
+<text x="285.0" y="262" text-anchor="middle" font-size="26" font-weight="bold">Equipo del asesor</text>
+<rect x="95" y="300" width="380" height="140" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="285.0" y="331" text-anchor="middle" font-size="20" font-weight="normal">«executionEnvironment»</text>
+<text x="285.0" y="360" text-anchor="middle" font-size="24" font-weight="bold">Navegador web</text>
+<rect x="95" y="650" width="380" height="120" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="285.0" y="681" text-anchor="middle" font-size="20" font-weight="normal">«artifact»</text>
+<text x="285.0" y="710" text-anchor="middle" font-size="24" font-weight="bold">public/index.html + js/css</text>
+<polyline points="285,650 285,440" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="291.00312928203925,451.53093399613067 285,440 278.99687071796075,451.53093399613067" fill="none" stroke="#333" stroke-width="2"/>
+<text x="305" y="560" text-anchor="start" font-size="21" font-weight="normal">«deploy»</text>
+<polyline points="660,190 676,174 1206,174 1206,834 1190,850" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1190,190 1206,174" fill="none" stroke="#333" stroke-width="2"/>
+<rect x="660" y="190" width="530" height="660" fill="#f8f8f8" stroke="#333" stroke-width="2"/>
+<text x="925.0" y="227" text-anchor="middle" font-size="21" font-weight="normal">«node»</text>
+<text x="925.0" y="262" text-anchor="middle" font-size="26" font-weight="bold">Host local o Codespace</text>
+<rect x="690" y="300" width="470" height="140" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="925.0" y="331" text-anchor="middle" font-size="20" font-weight="normal">«executionEnvironment»</text>
+<text x="925.0" y="360" text-anchor="middle" font-size="24" font-weight="bold">Node.js ≥ 18</text>
+<rect x="690" y="650" width="470" height="140" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="925.0" y="681" text-anchor="middle" font-size="20" font-weight="normal">«artifact»</text>
+<text x="925.0" y="710" text-anchor="middle" font-size="24" font-weight="bold">server.js + src/</text>
+<polyline points="690,727 1160,727" fill="none" stroke="#333" stroke-width="2"/>
+<text x="705" y="758" text-anchor="start" font-size="21" font-weight="normal">servicios y adaptador de datos</text>
+<polyline points="920,650 920,440" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="926.0031292820393,451.53093399613067 920,440 913.9968707179607,451.53093399613067" fill="none" stroke="#333" stroke-width="2"/>
+<text x="940" y="555" text-anchor="start" font-size="21" font-weight="normal">«deploy»</text>
+<polyline points="1390,190 1406,174 1856,174 1856,454 1840,470" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1840,190 1856,174" fill="none" stroke="#333" stroke-width="2"/>
+<rect x="1390" y="190" width="450" height="280" fill="#f8f8f8" stroke="#333" stroke-width="2"/>
+<text x="1615.0" y="227" text-anchor="middle" font-size="21" font-weight="normal">«node»</text>
+<text x="1615.0" y="262" text-anchor="middle" font-size="26" font-weight="bold">Supabase autorizado</text>
+<rect x="1420" y="300" width="390" height="130" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1615.0" y="331" text-anchor="middle" font-size="20" font-weight="normal">«executionEnvironment»</text>
+<text x="1615.0" y="360" text-anchor="middle" font-size="24" font-weight="bold">PostgreSQL / RPC privada</text>
+<polyline points="1390,660 1406,644 1856,644 1856,894 1840,910" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1840,660 1856,644" fill="none" stroke="#333" stroke-width="2"/>
+<rect x="1390" y="660" width="450" height="250" fill="#f8f8f8" stroke="#333" stroke-width="2"/>
+<text x="1615.0" y="697" text-anchor="middle" font-size="21" font-weight="normal">«node»</text>
+<text x="1615.0" y="732" text-anchor="middle" font-size="26" font-weight="bold">OpenAI (opcional)</text>
+<rect x="1420" y="760" width="390" height="110" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1615.0" y="791" text-anchor="middle" font-size="20" font-weight="normal">«executionEnvironment»</text>
+<text x="1615.0" y="820" text-anchor="middle" font-size="24" font-weight="bold">Responses API</text>
+<polyline points="505,365 660,365" fill="none" stroke="#333" stroke-width="2"/>
+<text x="585" y="300" text-anchor="middle" font-size="22" font-weight="normal">HTTP(S)</text>
+<polyline points="1190,365 1390,365" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1290" y="300" text-anchor="middle" font-size="21" font-weight="normal">HTTPS / RPC</text>
+<polyline points="1190,810 1390,810" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1290" y="750" text-anchor="middle" font-size="22" font-weight="normal">HTTPS</text>
+<text x="1390" y="522" text-anchor="start" font-size="20" font-weight="normal">[ALTHEA_STORAGE=supabase]</text>
+<text x="1390" y="965" text-anchor="start" font-size="20" font-weight="normal">[OPENAI_API_KEY configurada]</text>
+<text x="70" y="965" text-anchor="start" font-size="24" font-weight="normal">En local: HTTP y archivo JSON si se configura ALTHEA_STORAGE=json.</text>
+</g></svg>

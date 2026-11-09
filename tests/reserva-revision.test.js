@@ -64,6 +64,40 @@ test('Reservas: revisión, inventario, perfiles y políticas',async t=>{
     await api('PATCH','/api/solicitudes/'+s2.id+'/perfil',{...perfil,destino:{...perfil.destino,destino:'Destino sin catálogo'}});
     await api('POST','/api/reservas/vista-previa',datos2,409);
   });
+  await t.test('Cambiar fechas persiste, libera la salida anterior y conserva la reserva si hay conflicto',async()=>{
+    const sol=await api('POST','/api/solicitudes',{...perfil,cliente:{id:s.clienteId},destino:{...perfil.destino,fechaSalida:'2028-06-01',fechaRegreso:'2028-06-05'}},201);
+    const nueva=await api('POST','/api/solicitudes',{...perfil,cliente:{id:sol.clienteId},destino:{...perfil.destino,fechaSalida:'2028-07-01',fechaRegreso:'2028-07-05'}},201);
+    const reservar=async solicitudId=>{const d={solicitudId,asientos:['1A','1B'],politicasAceptadas:true};const p=await api('POST','/api/reservas/vista-previa',d);return api('POST','/api/reservas',{...d,vistaPreviaToken:p.vistaPreviaToken},201);};
+    const r=await reservar(sol.id);await reservar(nueva.id);
+    const cambio={fechaSalida:'2028-07-01',fechaRegreso:'2028-07-05',asientos:['1A','1B']};
+    await api('PATCH','/api/reservas/'+r.id,cambio,409);
+    assert.equal((await api('GET','/api/reservas/'+r.id)).fechaSalida,'2028-06-01');
+    assert.equal((await api('GET','/api/disponibilidad?solicitudId='+sol.id)).disponibles,22);
+    await api('PATCH','/api/reservas/'+r.id,{...cambio,fechaRegreso:'2028-06-30'},400);
+    await api('PATCH','/api/reservas/'+r.id,{...cambio,asientos:['2A','2B']});
+    const guardada=await api('GET','/api/reservas/'+r.id);
+    assert.equal(guardada.fechaSalida,cambio.fechaSalida);assert.equal(guardada.fechaRegreso,cambio.fechaRegreso);assert.deepEqual(guardada.asientos,['2A','2B']);
+    assert.equal((await api('GET','/api/solicitudes')).find(x=>x.id===sol.id).destino.fechaSalida,cambio.fechaSalida);
+    assert.equal((await api('GET','/api/disponibilidad?solicitudId='+sol.id)).disponibles,20);
+    const anterior=await api('POST','/api/solicitudes',{...perfil,cliente:{id:sol.clienteId},destino:{...perfil.destino,fechaSalida:'2028-06-01',fechaRegreso:'2028-06-05'}},201);
+    assert.equal((await api('GET','/api/disponibilidad?solicitudId='+anterior.id)).disponibles,24);
+    await api('POST','/api/reservas/'+r.id+'/cancelar');await api('PATCH','/api/reservas/'+r.id,cambio,409);
+  });
+  await t.test('Editar y quitar viajeros se persiste, invalida la cotización y usa la nueva cantidad al reservar',async()=>{
+    const p={...perfil,cliente:{id:s.clienteId},destino:{...perfil.destino,fechaSalida:'2028-08-01',fechaRegreso:'2028-08-05'}};
+    const sol=await api('POST','/api/solicitudes',p,201);
+    const c=await api('POST','/api/cotizaciones',{solicitudId:sol.id,descripcion:'Dos viajeros',total:1000},201);
+    const viajero={nombre:'Viajero corregido',documento:'DOC-CORREGIDO',tipo:'Adulto'};
+    await api('PATCH','/api/solicitudes/'+sol.id+'/perfil',{...p,viajeros:[viajero]});
+    const guardada=(await api('GET','/api/solicitudes')).find(x=>x.id===sol.id);
+    assert.deepEqual(guardada.viajeros,[viajero]);
+    assert.equal((await api('GET','/api/cotizaciones')).find(x=>x.id===c.id).estado,'Rechazada');
+    for(const viajeros of [[],[viajero,viajero],Array.from({length:31},(_,i)=>({...viajero,documento:String(i)}))])await api('PATCH','/api/solicitudes/'+sol.id+'/perfil',{...p,viajeros},400);
+    assert.deepEqual((await api('GET','/api/solicitudes')).find(x=>x.id===sol.id).viajeros,[viajero]);
+    const d={solicitudId:sol.id,asientos:['1A'],politicasAceptadas:true};const previa=await api('POST','/api/reservas/vista-previa',d);
+    const r=await api('POST','/api/reservas',{...d,vistaPreviaToken:previa.vistaPreviaToken},201);
+    assert.deepEqual(r.viajeros,[viajero]);assert.equal((await api('GET','/api/disponibilidad?solicitudId='+sol.id)).disponibles,23);
+  });
   await t.test('Fechas e inventario de toda la salida se validan al reservar',async()=>{
     await api('PATCH','/api/solicitudes/'+s2.id+'/perfil',{...perfil,destino:{...perfil.destino,fechaSalida:'2020-01-01',fechaRegreso:'2020-01-03'}});
     await api('GET','/api/disponibilidad?solicitudId='+s2.id,undefined,400);

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><g font-family="Segoe UI,DejaVu Sans,Arial,sans-serif">
+<rect x="25" y="25" width="1870" height="1030" fill="#ffffff" stroke="#333" stroke-width="2"/>
+<rect x="25" y="25" width="1050" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
+<text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">class Althea :: Dominio y clasificadores de interacción</text>
+<rect x="55" y="135" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="260.0" y="166" text-anchor="middle" font-size="24" font-weight="bold">Cliente</text>
+<polyline points="55,183 465,183" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="214" text-anchor="start" font-size="21" font-weight="normal">id: entero</text>
+<text x="70" y="243" text-anchor="start" font-size="21" font-weight="normal">nombre, correo, teléfono</text>
+<polyline points="55,279 465,279" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="311" text-anchor="start" font-size="20" font-weight="normal">+ crear()</text>
+<text x="70" y="340" text-anchor="start" font-size="20" font-weight="normal">+ modificar()</text>
+<rect x="520" y="135" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="725.0" y="166" text-anchor="middle" font-size="24" font-weight="bold">Solicitud</text>
+<polyline points="520,183 930,183" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="214" text-anchor="start" font-size="21" font-weight="normal">id, clienteId: entero</text>
+<text x="535" y="243" text-anchor="start" font-size="21" font-weight="normal">estado: EstadoSolicitud</text>
+<polyline points="520,279 930,279" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="311" text-anchor="start" font-size="20" font-weight="normal">+ crear()</text>
+<text x="535" y="340" text-anchor="start" font-size="20" font-weight="normal">+ modificarPerfil()</text>
+<rect x="985" y="135" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1190.0" y="166" text-anchor="middle" font-size="24" font-weight="bold">PerfilViaje</text>
+<polyline points="985,183 1395,183" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="214" text-anchor="start" font-size="21" font-weight="normal">destino, fechas</text>
+<text x="1000" y="243" text-anchor="start" font-size="21" font-weight="normal">servicio, presupuesto, intereses</text>
+<polyline points="985,279 1395,279" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="311" text-anchor="start" font-size="20" font-weight="normal">+ validarViaje()</text>
+<text x="1000" y="340" text-anchor="start" font-size="20" font-weight="normal">+ guardarPerfil()</text>
+<rect x="1450" y="135" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1655.0" y="166" text-anchor="middle" font-size="24" font-weight="bold">Viajero</text>
+<polyline points="1450,183 1860,183" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="214" text-anchor="start" font-size="21" font-weight="normal">nombre, documento</text>
+<text x="1465" y="243" text-anchor="start" font-size="21" font-weight="normal">tipo: Adulto | Niño</text>
+<polyline points="1450,279 1860,279" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="311" text-anchor="start" font-size="20" font-weight="normal">+ validarDatos()</text>
+<rect x="55" y="445" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="260.0" y="476" text-anchor="middle" font-size="24" font-weight="bold">Cotización</text>
+<polyline points="55,493 465,493" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="524" text-anchor="start" font-size="21" font-weight="normal">total: dinero</text>
+<text x="70" y="553" text-anchor="start" font-size="21" font-weight="normal">estado: EstadoCotización</text>
+<polyline points="55,589 465,589" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="621" text-anchor="start" font-size="20" font-weight="normal">+ modificar()</text>
+<text x="70" y="650" text-anchor="start" font-size="20" font-weight="normal">+ resolver()</text>
+<rect x="520" y="445" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="725.0" y="476" text-anchor="middle" font-size="24" font-weight="bold">Reserva</text>
+<polyline points="520,493 930,493" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="524" text-anchor="start" font-size="21" font-weight="normal">id, solicitudId, asientos</text>
+<text x="535" y="553" text-anchor="start" font-size="21" font-weight="normal">fechas, políticas, total</text>
+<polyline points="520,589 930,589" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="621" text-anchor="start" font-size="20" font-weight="normal">+ crear()</text>
+<text x="535" y="650" text-anchor="start" font-size="20" font-weight="normal">+ cancelar()</text>
+<rect x="985" y="445" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1190.0" y="476" text-anchor="middle" font-size="24" font-weight="bold">Pago</text>
+<polyline points="985,493 1395,493" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="524" text-anchor="start" font-size="21" font-weight="normal">reservaId, monto, referencia</text>
+<text x="1000" y="553" text-anchor="start" font-size="21" font-weight="normal">estado: Registrado | Anulado</text>
+<polyline points="985,589 1395,589" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="621" text-anchor="start" font-size="20" font-weight="normal">+ registrarPago()</text>
+<text x="1000" y="650" text-anchor="start" font-size="20" font-weight="normal">+ anularPago()</text>
+<rect x="1450" y="445" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1655.0" y="476" text-anchor="middle" font-size="24" font-weight="bold">Recomendador</text>
+<polyline points="1450,493 1860,493" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="524" text-anchor="start" font-size="21" font-weight="normal">catálogo: Destino[]</text>
+<text x="1465" y="553" text-anchor="start" font-size="21" font-weight="normal">modo: IA | local</text>
+<polyline points="1450,589 1860,589" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="621" text-anchor="start" font-size="20" font-weight="normal">+ recomendar(perfil)</text>
+<text x="1465" y="650" text-anchor="start" font-size="20" font-weight="normal">+ sugerenciasLocales()</text>
+<rect x="55" y="755" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="260.0" y="786" text-anchor="middle" font-size="24" font-weight="bold">InterfazAsesor</text>
+<polyline points="55,803 465,803" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="834" text-anchor="start" font-size="21" font-weight="normal">«boundary»</text>
+<text x="70" y="863" text-anchor="start" font-size="21" font-weight="normal">public/js/*.js</text>
+<polyline points="55,899 465,899" fill="none" stroke="#333" stroke-width="2"/>
+<text x="70" y="931" text-anchor="start" font-size="20" font-weight="normal">+ iniciarReserva()</text>
+<text x="70" y="960" text-anchor="start" font-size="20" font-weight="normal">+ formularioPago()</text>
+<rect x="520" y="755" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="725.0" y="786" text-anchor="middle" font-size="24" font-weight="bold">ServicioReservas</text>
+<polyline points="520,803 930,803" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="834" text-anchor="start" font-size="21" font-weight="normal">«control»</text>
+<text x="535" y="863" text-anchor="start" font-size="21" font-weight="normal">reservas.service.js</text>
+<polyline points="520,899 930,899" fill="none" stroke="#333" stroke-width="2"/>
+<text x="535" y="931" text-anchor="start" font-size="20" font-weight="normal">+ vistaPrevia(datos)</text>
+<text x="535" y="960" text-anchor="start" font-size="20" font-weight="normal">+ crear(datos) / modificar(id, datos)</text>
+<rect x="985" y="755" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1190.0" y="786" text-anchor="middle" font-size="24" font-weight="bold">GestionComercial</text>
+<polyline points="985,803 1395,803" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="834" text-anchor="start" font-size="21" font-weight="normal">«control»</text>
+<text x="1000" y="863" text-anchor="start" font-size="21" font-weight="normal">gestion.service.js</text>
+<polyline points="985,899 1395,899" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1000" y="931" text-anchor="start" font-size="20" font-weight="normal">+ registrarPago(datos)</text>
+<text x="1000" y="960" text-anchor="start" font-size="20" font-weight="normal">+ anularPago(id)</text>
+<rect x="1450" y="755" width="410" height="225" fill="#ffffdf" stroke="#333" stroke-width="2"/>
+<text x="1655.0" y="786" text-anchor="middle" font-size="24" font-weight="bold">AlmacenDatos</text>
+<polyline points="1450,803 1860,803" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="834" text-anchor="start" font-size="21" font-weight="normal">«control»</text>
+<text x="1465" y="863" text-anchor="start" font-size="21" font-weight="normal">models/db.js</text>
+<polyline points="1450,899 1860,899" fill="none" stroke="#333" stroke-width="2"/>
+<text x="1465" y="931" text-anchor="start" font-size="20" font-weight="normal">+ load() / save()</text>
+<text x="1465" y="960" text-anchor="start" font-size="20" font-weight="normal">+ nextId(tabla)</text>
+<polyline points="465,230 520,230" fill="none" stroke="#333" stroke-width="2"/>
+<text x="472" y="213" text-anchor="start" font-size="19" font-weight="normal">1</text>
+<text x="487" y="256" text-anchor="start" font-size="18" font-weight="normal">0..*</text>
+<polyline points="930,230 985,230" fill="none" stroke="#333" stroke-width="2"/>
+<text x="941" y="213" text-anchor="start" font-size="19" font-weight="normal">1</text>
+<text x="958" y="256" text-anchor="start" font-size="19" font-weight="normal">1</text>
+<polygon points="930,230 943,221 956,230 943,239" fill="#222"/>
+<polyline points="700,360 700,397 1660,397 1660,360" fill="none" stroke="#333" stroke-width="2"/>
+<text x="715" y="384" text-anchor="start" font-size="20" font-weight="normal">1</text>
+<text x="1675" y="384" text-anchor="start" font-size="20" font-weight="normal">1..30</text>
+<polygon points="700,360 691,373 700,386 709,373" fill="#222"/>
+<polyline points="520,320 490,320 490,390 260,390 260,445" fill="none" stroke="#333" stroke-width="2"/>
+<text x="490" y="300" text-anchor="start" font-size="19" font-weight="normal">1</text>
+<text x="275" y="432" text-anchor="start" font-size="19" font-weight="normal">0..*</text>
+<polyline points="725,360 725,445" fill="none" stroke="#333" stroke-width="2"/>
+<text x="740" y="382" text-anchor="start" font-size="20" font-weight="normal">1</text>
+<text x="740" y="431" text-anchor="start" font-size="19" font-weight="normal">0..*</text>
+<polyline points="465,550 520,550" fill="none" stroke="#333" stroke-width="2"/>
+<text x="470" y="530" text-anchor="start" font-size="17" font-weight="normal">0..1</text>
+<text x="485" y="579" text-anchor="start" font-size="17" font-weight="normal">0..1</text>
+<polyline points="930,550 985,550" fill="none" stroke="#333" stroke-width="2"/>
+<text x="941" y="530" text-anchor="start" font-size="19" font-weight="normal">1</text>
+<text x="946" y="579" text-anchor="start" font-size="18" font-weight="normal">0..*</text>
+<polyline points="465,874 520,874" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="508.46906600386933,880.0031292820393 520,874 508.46906600386933,867.9968707179607" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="260,980 260,1010 1190,1010 1190,980" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1196.0031292820393,991.5309339961307 1190,980 1183.9968707179607,991.5309339961307" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="725,980 725,1030 1660,1030 1660,980" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1666.0031292820393,991.5309339961307 1660,980 1653.9968707179607,991.5309339961307" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1395,874 1450,874" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1438.4690660038693,880.0031292820393 1450,874 1438.4690660038693,867.9968707179607" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="725,755 725,670" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="731.0031292820393,681.5309339961307 725,670 718.9968707179607,681.5309339961307" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="1190,755 1190,670" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="1196.0031292820393,681.5309339961307 1190,670 1183.9968707179607,681.5309339961307" fill="none" stroke="#333" stroke-width="2"/>
+</g></svg>
