@@ -1,95 +1,14 @@
 {
-  "clientes": [
-    {
-      "id": 1,
-      "nombre": "Johan Murillo",
-      "correo": "johan@correo.com",
-      "telefono": "+57 300 123 4567"
-    },
-    {
-      "id": 2,
-      "nombre": "María Fernanda Ríos",
-      "correo": "mafe.rios@correo.com",
-      "telefono": "+57 310 555 0199"
-    },
-    {
-      "id": 3,
-      "nombre": "dadasd",
-      "correo": "dasdasd@ksj.com",
-      "telefono": "dasdasd"
-    },
-    {
-      "id": 4,
-      "nombre": "Sanet Correa",
-      "correo": "soysanet@hola.com",
-      "telefono": "+57 1234567678"
-    }
-  ],
-  "solicitudes": [
-    {
-      "id": 1,
-      "clienteId": 3,
-      "viajeros": [
-        {
-          "nombre": "Cristian",
-          "documento": "1032099343",
-          "tipo": "Niño"
-        }
-      ],
-      "destino": {
-        "origen": "medellin",
-        "destino": "cartago",
-        "fechaSalida": "2026-10-03",
-        "fechaRegreso": "2026-10-22"
-      },
-      "preferencias": {
-        "tipoServicio": "Hotel",
-        "presupuesto": null,
-        "notas": ""
-      },
-      "estado": "Pendiente",
-      "creadaEn": "2026-10-05T20:32:05.780Z"
-    },
-    {
-      "id": 2,
-      "clienteId": 4,
-      "viajeros": [
-        {
-          "nombre": "Camilo",
-          "documento": "12345678",
-          "tipo": "Adulto"
-        }
-      ],
-      "destino": {
-        "origen": "medellin",
-        "destino": "peru",
-        "fechaSalida": "0015-12-23",
-        "fechaRegreso": "2026-10-22"
-      },
-      "preferencias": {
-        "tipoServicio": "Vuelo",
-        "presupuesto": 10000020,
-        "notas": ""
-      },
-      "estado": "Pendiente",
-      "creadaEn": "2026-10-06T15:54:40.306Z"
-    }
-  ],
-  "reservas": [
-    {
-      "id": 1,
-      "codigo": "RES-0001",
-      "solicitudId": 1,
-      "clienteId": 3,
-      "fechaSalida": "2026-10-14",
-      "fechaRegreso": "2026-10-29",
-      "estado": "Cancelada",
-      "creadaEn": "2026-10-05T20:32:09.061Z"
-    }
-  ],
+  "clientes": [],
+  "solicitudes": [],
+  "reservas": [],
   "seq": {
     "clientes": 4,
     "solicitudes": 2,
-    "reservas": 1
-  }
+    "reservas": 1,
+    "cotizaciones": 0,
+    "pagos": 0
+  },
+  "cotizaciones": [],
+  "pagos": []
 }
