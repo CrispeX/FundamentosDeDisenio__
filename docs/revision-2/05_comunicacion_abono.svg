@@ -3,8 +3,13 @@
 <rect x="25" y="25" width="924" height="59" fill="#f1f1f1" stroke="#333" stroke-width="2"/>
 <text x="45" y="65" text-anchor="start" font-size="29" font-weight="bold">communication Althea :: Registrar abono recibido</text>
 <text x="70" y="133" text-anchor="start" font-size="23" font-weight="normal">Precondición: reserva activa con total; monto positivo hasta el saldo y referencia de pago única.</text>
-<rect x="65" y="420" width="280" height="100" fill="#ffffdf" stroke="#333" stroke-width="2"/>
-<text x="205.0" y="451" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">Asesor</text>
+<circle cx="205" cy="397" r="20" fill="white" stroke="#00ad83" stroke-width="3"/>
+<polyline points="205,417 205,510" fill="none" stroke="#00ad83" stroke-width="3"/>
+<polyline points="165,450 245,450" fill="none" stroke="#00ad83" stroke-width="3"/>
+<polyline points="205,510 168,560" fill="none" stroke="#00ad83" stroke-width="3"/>
+<polyline points="205,510 242,560" fill="none" stroke="#00ad83" stroke-width="3"/>
+<text x="205" y="602" text-anchor="middle" font-size="24" font-weight="normal">Asesor</text>
+<text x="205" y="631" text-anchor="middle" font-size="24" font-weight="normal">comercial</text>
 <rect x="530" y="420" width="380" height="100" fill="#ffffdf" stroke="#333" stroke-width="2"/>
 <text x="720.0" y="451" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">pantalla:InterfazAsesor</text>
 <rect x="1100" y="420" width="400" height="100" fill="#ffffdf" stroke="#333" stroke-width="2"/>
@@ -13,11 +18,11 @@
 <text x="1630.0" y="231" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">pago:Pago</text>
 <rect x="1430" y="780" width="400" height="100" fill="#ffffdf" stroke="#333" stroke-width="2"/>
 <text x="1630.0" y="811" text-anchor="middle" font-size="24" font-weight="bold" text-decoration="underline">db:AlmacenDatos</text>
-<polyline points="345,450 530,450" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="245,450 530,450" fill="none" stroke="#333" stroke-width="2"/>
 <polygon points="530,450 518.4690660038693,456.00312928203925 518.4690660038693,443.99687071796075" fill="#333333" stroke="#333"/>
 <text x="437" y="412" text-anchor="middle" font-size="21" font-weight="normal">1: confirmar</text>
-<polyline points="530,500 345,500" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
-<polyline points="356.53093399613067,493.99687071796075 345,500 356.53093399613067,506.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
+<polyline points="530,500 205,500" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8 7"/>
+<polyline points="216.5309339961307,493.99687071796075 205,500 216.5309339961307,506.00312928203925" fill="none" stroke="#333" stroke-width="2"/>
 <text x="437" y="555" text-anchor="middle" font-size="19" font-weight="normal">retorno: resultado</text>
 <polyline points="910,450 1100,450" fill="none" stroke="#333" stroke-width="2"/>
 <polygon points="1100,450 1088.4690660038693,456.00312928203925 1088.4690660038693,443.99687071796075" fill="#333333" stroke="#333"/>

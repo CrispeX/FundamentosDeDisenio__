@@ -156,13 +156,27 @@ lifeline(1710,'pago:Pago',600);message(950,1550,638,'1.1.2: «create» Pago',kin
 message(950,1345,715,'1.1.3: save()');message(1345,950,780,'persistencia completada','reply');message(950,555,865,'recibo y saldo recalculado','reply');message(555,200,945,'mostrar recibo','reply')
 finish()
 
+def actor_comercial(x,y):
+    green='#00ad83'
+    draw.ellipse((x-20,y-20,x+20,y+20),fill='white',outline=green,width=3)
+    pdf.setStrokeColor(color(green));pdf.setLineWidth(2.3);pdf.circle(x,H-y,20,stroke=1,fill=0)
+    svg.append(f'<circle cx="{x}" cy="{y}" r="20" fill="white" stroke="{green}" stroke-width="3"/>')
+    paths=[[(x,y+20),(x,y+113)],[(x-40,y+53),(x+40,y+53)],[(x,y+113),(x-37,y+163)],[(x,y+113),(x+37,y+163)]]
+    for points in paths:
+        draw.line(points,fill=green,width=3)
+        pdf.setStrokeColor(color(green));pdf.setLineWidth(2.3)
+        for a,b in zip(points,points[1:]):pdf.line(a[0],H-a[1],b[0],H-b[1])
+        svg.append('<polyline points="'+' '.join(f'{px},{py}' for px,py in points)+f'" fill="none" stroke="{green}" stroke-width="3"/>')
+    text(x,y+205,'Asesor',24,anchor='middle')
+    text(x,y+234,'comercial',24,anchor='middle')
+
 def communication(name,title,control,operation,entity,precondition):
     begin(name,title)
     text(70,133,precondition,23)
-    box(65,420,280,100,'Asesor',under=True);box(530,420,380,100,'pantalla:InterfazAsesor',under=True)
+    actor_comercial(205,397);box(530,420,380,100,'pantalla:InterfazAsesor',under=True)
     box(1100,420,400,100,control,under=True);box(1430,200,400,100,entity,under=True);box(1430,780,400,100,'db:AlmacenDatos',under=True)
-    line([(345,450),(530,450)],arrow='filled');text(437,412,'1: confirmar',21,anchor='middle')
-    line([(530,500),(345,500)],dash=True,arrow='open');text(437,555,'retorno: resultado',19,anchor='middle')
+    line([(245,450),(530,450)],arrow='filled');text(437,412,'1: confirmar',21,anchor='middle')
+    line([(530,500),(205,500)],dash=True,arrow='open');text(437,555,'retorno: resultado',19,anchor='middle')
     line([(910,450),(1100,450)],arrow='filled');text(1005,365,'1.1: '+operation,21,anchor='middle')
     line([(1100,500),(910,500)],dash=True,arrow='open');text(1005,555,'retorno: resultado',19,anchor='middle')
     line([(1300,420),(1300,250),(1430,250)],dash=True,arrow='open');text(1245,185,'1.1.2: «create» '+entity.split(':')[1],22)
